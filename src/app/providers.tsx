@@ -5,7 +5,12 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (
-		<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+		<ThemeProvider
+			attribute="class"
+			defaultTheme="system"
+			disableTransitionOnChange
+			enableSystem
+		>
 			<TooltipProvider>{children}</TooltipProvider>
 			<Toaster position="top-center" />
 		</ThemeProvider>

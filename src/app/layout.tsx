@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import { cn } from "@/lib/utils"
 import Providers from "./providers"
 import "@/styles/globals.css"
+import { AppLayout } from "@/components/layout/app-layout"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -18,8 +19,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 			lang="en"
 			suppressHydrationWarning
 		>
-			<body className="typeset typeset-docs">
-				<Providers>{children}</Providers>
+			<body className="typeset-docs">
+				<Providers>
+					<AppLayout>{children}</AppLayout>
+				</Providers>
 			</body>
 		</html>
 	)
