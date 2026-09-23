@@ -1,5 +1,10 @@
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import { cn } from "@/lib/utils"
+import Providers from "./providers"
 import "@/styles/globals.css"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -8,8 +13,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
 	return (
-		<html className="h-full antialiased" lang="en">
-			<body>{children}</body>
+		<html
+			className={cn("h-full antialiased", "font-sans", inter.variable)}
+			lang="en"
+			suppressHydrationWarning
+		>
+			<body className="typeset typeset-docs">
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	)
 }
