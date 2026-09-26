@@ -8,7 +8,7 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { genres } from "@/lib/data"
+import { genres } from "@/lib/data/genres"
 
 export function GenresMegaMenu() {
 	return (
@@ -27,7 +27,7 @@ export function GenresMegaMenu() {
 										render={
 											<Link
 												className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
-												href={`/genres?genre=${genre.id}` as Route}
+												href={`/genres/${genre.id}` as Route}
 											>
 												{genre.name}
 											</Link>
@@ -40,7 +40,7 @@ export function GenresMegaMenu() {
 									render={
 										<Link
 											className="block rounded-lg px-3 py-2 text-sm font-medium text-accent-gold transition-colors hover:bg-accent-gold/10"
-											href="/"
+											href="/genres"
 										>
 											Browse all genres →
 										</Link>

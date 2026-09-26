@@ -1,99 +1,95 @@
 import type { Genre } from "@/lib/types/media"
 
-function unsplash(id: string): string {
-	return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=780&h=440&q=80`
-}
-
 export const genres: Genre[] = [
 	{
 		id: "action",
 		name: "Action",
 		description: "High-stakes stunts, chases, and confrontations.",
-		backdropPath: unsplash("photo-1517602302552-471fe67acf66"),
+		backdropPath: "/images/genres/action.jpg",
 	},
 	{
 		id: "sci-fi",
 		name: "Science Fiction",
 		description: "Speculative futures, technology, and the unknown.",
-		backdropPath: unsplash("photo-1451187580459-43490279c0fa"),
+		backdropPath: "/images/genres/sci-fi.jpg",
 	},
 	{
 		id: "drama",
 		name: "Drama",
 		description: "Character-driven stories of consequence.",
-		backdropPath: unsplash("photo-1500964757637-c85e8a162699"),
+		backdropPath: "/images/genres/drama.jpg",
 	},
 	{
 		id: "thriller",
 		name: "Thriller",
 		description: "Tension, suspense, and the edge of your seat.",
-		backdropPath: unsplash("photo-1478760329108-5c3ed9d495a0"),
+		backdropPath: "/images/genres/thriller.jpg",
 	},
 	{
 		id: "comedy",
 		name: "Comedy",
 		description: "Sharp writing built to make you laugh.",
-		backdropPath: unsplash("photo-1541278107931-e006523892df"),
+		backdropPath: "/images/genres/comedy.jpg",
 	},
 	{
 		id: "crime",
 		name: "Crime",
 		description: "Heists, investigations, and moral grey areas.",
-		backdropPath: unsplash("photo-1449824913935-59a10b8d2000"),
+		backdropPath: "/images/genres/crime.jpg",
 	},
 	{
 		id: "fantasy",
 		name: "Fantasy",
 		description: "Myth, magic, and worlds beyond our own.",
-		backdropPath: unsplash("photo-1518709268805-4e9042af2176"),
+		backdropPath: "/images/genres/fantasy.jpg",
 	},
 	{
 		id: "horror",
 		name: "Horror",
 		description: "Dread, tension, and the things in the dark.",
-		backdropPath: unsplash("photo-1446776653964-20c1d3a81b06"),
+		backdropPath: "/images/genres/horror.jpg",
 	},
 	{
 		id: "animation",
 		name: "Animation",
 		description: "Craft and imagination frame by frame.",
-		backdropPath: unsplash("photo-1536440136628-849c177e76a1"),
+		backdropPath: "/images/genres/animation.jpg",
 	},
 	{
 		id: "mystery",
 		name: "Mystery",
 		description: "Puzzles, clues, and questions worth answering.",
-		backdropPath: unsplash("photo-1517976487492-5750f3195933"),
+		backdropPath: "/images/genres/mystery.jpg",
 	},
 	{
 		id: "romance",
 		name: "Romance",
 		description: "Connection, longing, and the space between two people.",
-		backdropPath: unsplash("photo-1470770903676-69b98201ea1c"),
+		backdropPath: "/images/genres/romance.jpg",
 	},
 	{
 		id: "documentary",
 		name: "Documentary",
 		description: "Real stories told with cinematic craft.",
-		backdropPath: unsplash("photo-1504711434969-e33886168f5c"),
+		backdropPath: "/images/genres/documentary.jpg",
 	},
 	{
 		id: "family",
 		name: "Family",
 		description: "Stories built for every generation in the room.",
-		backdropPath: unsplash("photo-1551524559-8af4e6624178"),
+		backdropPath: "/images/genres/family.jpg",
 	},
 	{
 		id: "history",
 		name: "History",
 		description: "Turning points, retold with weight and detail.",
-		backdropPath: unsplash("photo-1533622597524-a1215e26c0a0"),
+		backdropPath: "/images/genres/history.jpg",
 	},
 	{
 		id: "adventure",
 		name: "Adventure",
 		description: "Journeys across distance, danger, and discovery.",
-		backdropPath: unsplash("photo-1519681393784-d120267933ba"),
+		backdropPath: "/images/genres/adventure.jpg",
 	},
 ]
 

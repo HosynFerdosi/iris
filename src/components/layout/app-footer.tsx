@@ -7,7 +7,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import type { Route } from "next"
 import Link from "next/link"
 import { Logo } from "@/components/shared/logo"
-import { genres } from "@/lib/data"
+import { genres } from "@/lib/data/genres"
 
 const footerColumns = [
 	{
@@ -23,7 +23,7 @@ const footerColumns = [
 		title: "Genres",
 		links: genres
 			.slice(0, 4)
-			.map((g) => ({ href: `/genres?genre=${g.id}`, label: g.name })),
+			.map((g) => ({ href: `/genres/${g.id}`, label: g.name })),
 	},
 	{
 		title: "Account",

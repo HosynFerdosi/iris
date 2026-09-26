@@ -79,6 +79,7 @@ export function AppImage({
 						className
 					)}
 					fill={fill ?? true}
+					loading="eager"
 					onError={() => setStatus("error")}
 					onLoad={() => setStatus("loaded")}
 					sizes={
