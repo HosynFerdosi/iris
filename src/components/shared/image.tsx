@@ -74,7 +74,7 @@ export function AppImage({
 				<NextImage
 					alt={alt}
 					className={cn(
-						"object-cover transition-opacity duration-500",
+						"object-cover transition-all duration-500",
 						status === "loaded" ? "opacity-100" : "opacity-0",
 						className
 					)}

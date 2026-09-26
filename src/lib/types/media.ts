@@ -80,7 +80,7 @@ export interface Person {
 	id: string
 	name: string
 	profilePath: string
-	knownFor: "Acting" | "Directing" | "Writing" | "Production"
+	knownFor: "Acting" | "Directing" | "Writing" | "Production" | "Composer"
 	birthYear: number
 	birthplace: string
 	biography: string
