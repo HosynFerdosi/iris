@@ -94,7 +94,7 @@ export default async function Page({ params }: PageProps<"/movie/[id]">) {
 				</BreadcrumbList>
 			</Breadcrumb>
 
-			<DetailsHero movie={movie} />
+			<DetailsHero item={movie} />
 
 			<div className="mx-auto mt-10 max-w-[1600px] space-y-12 px-4 sm:px-6 lg:px-10">
 				<CastCrewSection cast={movie.cast} crew={movie.crew} />

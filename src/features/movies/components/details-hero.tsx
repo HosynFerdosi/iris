@@ -10,20 +10,22 @@ import { Button } from "@/components/ui/button"
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
 import { getGenreById } from "@/lib/data/genres"
-import type { Movie } from "@/lib/types/media"
+import type { Movie, TVShow } from "@/lib/types/media"
 
 type DetailsHeroProps = {
-	movie: Movie
+	item: Movie | TVShow
 }
 
-export function DetailsHero({ movie }: DetailsHeroProps) {
-	const year = new Date(movie.releaseDate).getFullYear()
-	const genreNames = movie.genreIds
+export function DetailsHero({ item }: DetailsHeroProps) {
+	const year = new Date(
+		"releaseDate" in item ? item.releaseDate : item.firstAirDate
+	).getFullYear()
+	const genreNames = item.genreIds
 		.map((id) => getGenreById(id))
 		.filter((g): g is NonNullable<typeof g> => Boolean(g))
 
 	const handleWatchlist = () => {
-		toast.success(`Added "${movie.title}" to your watchlist`)
+		toast.success(`Added "${item.title}" to your watchlist`)
 	}
 
 	const handleShare = () => {
@@ -38,7 +40,7 @@ export function DetailsHero({ movie }: DetailsHeroProps) {
 					aspect="auto"
 					preload
 					sizes=""
-					src={movie.backdropPath}
+					src={item.backdropPath}
 				/>
 				<div className="absolute inset-0 bg-linear-to-t from-background via-background/60 to-background/20" />
 				<div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/40 to-transparent" />
@@ -53,10 +55,10 @@ export function DetailsHero({ movie }: DetailsHeroProps) {
 						transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 					>
 						<AppImage
-							alt={movie.title}
+							alt={item.title}
 							aspect="poster"
 							preload
-							src={movie.posterPath}
+							src={item.posterPath}
 						/>
 					</motion.div>
 
@@ -78,32 +80,32 @@ export function DetailsHero({ movie }: DetailsHeroProps) {
 							))}
 						</div>
 						<h1 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-							{movie.title}
+							{item.title}
 						</h1>
-						{movie.tagline && (
+						{item.tagline && (
 							<p className="mt-2 text-base italic text-muted-foreground">
-								{movie.tagline}
+								{item.tagline}
 							</p>
 						)}
 						<div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
 							<Rating
-								count={movie.ratingCount}
+								count={item.ratingCount}
 								size="lg"
-								value={movie.rating}
+								value={item.rating}
 							/>
 							<span className="text-muted-foreground">{year}</span>
-							{movie.runtimeMinutes && (
+							{"runtimeMinutes" in item && item.runtimeMinutes && (
 								<span className="text-muted-foreground">
-									{Math.floor(movie.runtimeMinutes / 60)}h{" "}
-									{movie.runtimeMinutes % 60}m
+									{Math.floor(item.runtimeMinutes / 60)}h{" "}
+									{item.runtimeMinutes % 60}m
 								</span>
 							)}
 							<span className="text-muted-foreground">
-								{movie.countryOfOrigin}
+								{item.countryOfOrigin}
 							</span>
 						</div>
 						<p className="mt-5 text-sm leading-relaxed text-foreground/90 sm:text-base">
-							{movie.overview}
+							{item.overview}
 						</p>
 						<div className="mt-7 flex flex-wrap items-center gap-3">
 							<Button size="lg">

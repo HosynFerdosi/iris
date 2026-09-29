@@ -1,9 +1,9 @@
 import { MovieCard } from "@/features/media/components/movie-card"
-import type { Movie } from "@/lib/types/media"
+import type { Movie, TVShow } from "@/lib/types/media"
 import { cn } from "@/lib/utils"
 
 interface MediaGridProps {
-	items: Movie[]
+	items: Movie[] | TVShow[]
 	className?: string
 }
 
