@@ -3,6 +3,7 @@ import { ArrowDown01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { cva } from "class-variance-authority"
 import { cn } from "cn"
+import { glassSurfaceVariants } from "./glasscn/glass-variants"
 
 function NavigationMenu({
 	align = "start",
@@ -118,7 +119,14 @@ function NavigationMenuPositioner({
 				sideOffset={sideOffset}
 				{...props}
 			>
-				<NavigationMenuPrimitive.Popup className="data-[ending-style]:easing-[ease] xs:w-(--popup-width) relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-3xl bg-popover text-popover-foreground shadow-lg ring-1 ring-foreground/5 transition-[opacity,transform,width,height,scale,translate] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] outline-none data-ending-style:scale-90 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:scale-90 data-starting-style:opacity-0 dark:ring-foreground/10">
+				<NavigationMenuPrimitive.Popup
+					className={cn(
+						"data-[ending-style]:easing-[ease] xs:w-(--popup-width) relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-3xl text-popover-foreground shadow-lg ring-1 ring-foreground/5 transition-[opacity,transform,width,height,scale,translate] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] outline-none data-ending-style:scale-90 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:scale-90 data-starting-style:opacity-0 dark:ring-foreground/10 not-dark:bg-white/60 dark:bg-black/50",
+						glassSurfaceVariants({
+							glassVariant: "frosted",
+						})
+					)}
+				>
 					<NavigationMenuPrimitive.Viewport className="relative size-full overflow-hidden" />
 				</NavigationMenuPrimitive.Popup>
 			</NavigationMenuPrimitive.Positioner>

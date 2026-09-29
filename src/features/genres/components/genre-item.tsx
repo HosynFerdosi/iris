@@ -20,7 +20,7 @@ export default function GenreItem({ genre, index }: Props) {
 			<AppImage
 				alt={genre.name}
 				aspect="auto"
-				sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+				sizes=""
 				src={genre.backdropPath}
 			/>
 			<div className="absolute inset-0 bg-linear-to-t from-overlay-scrim/90 via-overlay-scrim/30 to-transparent transition-opacity duration-300 group-hover:from-overlay-scrim/95" />

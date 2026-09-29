@@ -14,12 +14,9 @@ export function ThemeToggle() {
 
 	if (!mounted) {
 		return (
-			<Button
-				aria-hidden
-				className="opacity-0"
-				size="icon"
-				variant="ghost"
-			/>
+			<Button aria-hidden size="icon" variant="ghost">
+				<HugeiconsIcon className="size-4.5" icon={Sun03Icon} />
+			</Button>
 		)
 	}
 
@@ -32,7 +29,10 @@ export function ThemeToggle() {
 			size="icon"
 			variant="ghost"
 		>
-			<HugeiconsIcon icon={isDark ? Sun03Icon : Moon02Icon} size={19} />
+			<HugeiconsIcon
+				className="size-4.5"
+				icon={isDark ? Sun03Icon : Moon02Icon}
+			/>
 		</Button>
 	)
 }

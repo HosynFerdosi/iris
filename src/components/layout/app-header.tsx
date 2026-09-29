@@ -6,11 +6,10 @@ import {
 	UserIcon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { motion, useMotionValueEvent, useScroll } from "framer-motion"
+import { motion } from "framer-motion"
 import type { Route } from "next"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
 import { GenresMegaMenu } from "@/components/layout/genres-mega-menu"
 import { MobileNav } from "@/components/layout/mobile-nav"
 import { ThemeToggle } from "@/components/layout/theme-toggle"
@@ -28,21 +27,13 @@ const navLinks = [
 ]
 
 export function SiteHeader() {
-	const [scrolled, setScrolled] = useState(false)
-	const { scrollY } = useScroll()
 	const pathname = usePathname()
-
-	useMotionValueEvent(scrollY, "change", (latest) => {
-		setScrolled(latest > 24)
-	})
 
 	return (
 		<motion.header
 			className={cn(
-				"sticky top-0 z-40 w-full transition-colors duration-300",
-				scrolled
-					? glassSurfaceVariants({ glassVariant: "frosted" })
-					: "bg-transparent"
+				"sticky top-0 z-40 w-full transition-colors duration-300 not-dark:bg-white/60! dark:bg-black/50!",
+				glassSurfaceVariants({ glassVariant: "frosted" })
 			)}
 			initial={false}
 		>
@@ -56,7 +47,7 @@ export function SiteHeader() {
 						{navLinks.map((link) => (
 							<Link
 								className={cn(
-									"text-sm font-medium transition-colors hover:text-foreground no-underline",
+									"text-sm font-medium transition-colors hover:text-primary no-underline",
 									pathname === link.href
 										? "text-foreground"
 										: "text-muted-foreground"
@@ -74,18 +65,21 @@ export function SiteHeader() {
 				<div className="flex items-center gap-1 sm:gap-2">
 					<Link href="/">
 						<Button aria-label="Search" size="icon" variant="ghost">
-							<HugeiconsIcon icon={Search01Icon} size={19} />
+							<HugeiconsIcon className="size-4.5" icon={Search01Icon} />
 						</Button>
 					</Link>
 					<Link className="hidden lg:block" href="/">
 						<Button aria-label="Watchlist" size="icon" variant="ghost">
-							<HugeiconsIcon icon={BookmarkAdd01Icon} size={19} />
+							<HugeiconsIcon
+								className="size-4.5"
+								icon={BookmarkAdd01Icon}
+							/>
 						</Button>
 					</Link>
 					<ThemeToggle />
 					<Link href="/">
 						<Button aria-label="Profile" size="icon" variant="ghost">
-							<HugeiconsIcon icon={UserIcon} size={19} />
+							<HugeiconsIcon className="size-4.5" icon={UserIcon} />
 						</Button>
 					</Link>
 					<Link className="hidden lg:block" href="/">

@@ -26,7 +26,7 @@ export default function TvPage() {
 					{featured.map((show) => (
 						<Link
 							className="group relative aspect-16/8 overflow-hidden rounded-2xl ring-1 ring-white/5"
-							href={`/tv-show/${show.id}` as Route}
+							href={`/tv/${show.id}` as Route}
 							key={show.id}
 						>
 							<AppImage

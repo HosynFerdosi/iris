@@ -26,7 +26,7 @@ export function GenresMegaMenu() {
 										key={genre.id}
 										render={
 											<Link
-												className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
+												className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-primary"
 												href={`/genres/${genre.id}` as Route}
 											>
 												{genre.name}
@@ -39,7 +39,7 @@ export function GenresMegaMenu() {
 								<NavigationMenuLink
 									render={
 										<Link
-											className="block rounded-lg px-3 py-2 text-sm font-medium text-accent-gold transition-colors hover:bg-accent-gold/10"
+											className="block rounded-lg px-3 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
 											href="/genres"
 										>
 											Browse all genres →
