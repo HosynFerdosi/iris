@@ -11,7 +11,7 @@ import { EmptyState } from "@/components/shared/empty-state"
 import { AppImage } from "@/components/shared/image"
 import { Badge } from "@/components/ui/badge"
 import { MediaGrid } from "@/features/media/components/media-grid"
-import { getSimilar } from "@/lib/data/movies"
+import { getMediaByIds } from "@/lib/data/func"
 import { getPersonById } from "@/lib/data/people"
 
 interface PersonPageProps {
@@ -37,7 +37,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
 
 	if (!person) notFound()
 
-	const filmography = getSimilar(person.filmographyIds)
+	const filmography = getMediaByIds(person.filmographyIds)
 
 	return (
 		<div className="pb-20">

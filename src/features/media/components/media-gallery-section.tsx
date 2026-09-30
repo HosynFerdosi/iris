@@ -32,7 +32,7 @@ export function MediaGallerySection({
 			<Carousel
 				opts={{
 					align: "start",
-					dragFree: false,
+					dragFree: true,
 				}}
 			>
 				<CarouselContent className="lg:*:basis-1/4 md:*:basis-1/3 *:basis-1/2">

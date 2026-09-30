@@ -18,8 +18,8 @@ import { DetailsFacts } from "@/features/movies/components/details-facts"
 import { DetailsHero } from "@/features/movies/components/details-hero"
 import { ReviewsSection } from "@/features/movies/components/reviews-section"
 import { SeasonsSection } from "@/features/tv/components/seasons-section"
+import { getSimilar } from "@/lib/data/func"
 import { getGenreById } from "@/lib/data/genres"
-import { getSimilar } from "@/lib/data/movies"
 import { getReviewsByMediaId } from "@/lib/data/reviews"
 import { getTvShowById } from "@/lib/data/tv"
 
@@ -47,7 +47,7 @@ export default async function TvDetailPage({ params }: PageProps<"/tv/[id]">) {
 
 	if (!show) notFound()
 
-	const similar = getSimilar(show.similarIds)
+	const similar = getSimilar(show)
 	const reviews = getReviewsByMediaId(show.id)
 	const primaryGenre = show.genreIds[0]
 		? getGenreById(show.genreIds[0])

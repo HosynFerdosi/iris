@@ -12,7 +12,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { GenresMegaMenu } from "@/components/layout/genres-mega-menu"
 import { MobileNav } from "@/components/layout/mobile-nav"
-import { ThemeToggle } from "@/components/layout/theme-toggle"
 import { Logo } from "@/components/shared/logo"
 import { Button } from "@/components/ui/button"
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
@@ -32,8 +31,8 @@ export function SiteHeader() {
 	return (
 		<motion.header
 			className={cn(
-				"sticky top-0 z-40 w-full transition-colors duration-300 not-dark:bg-white/60! dark:bg-black/50!",
-				glassSurfaceVariants({ glassVariant: "frosted" })
+				glassSurfaceVariants({ glassVariant: "frosted" }),
+				"sticky top-0 z-40 w-full transition-colors duration-300 not-dark:bg-white/85 dark:bg-black/50!"
 			)}
 			initial={false}
 		>
@@ -62,29 +61,28 @@ export function SiteHeader() {
 					</nav>
 				</div>
 
-				<div className="flex items-center gap-1 sm:gap-2">
+				<div className="flex items-center gap-1 sm:gap-3">
 					<Link href="/">
 						<Button aria-label="Search" size="icon" variant="ghost">
-							<HugeiconsIcon className="size-4.5" icon={Search01Icon} />
+							<HugeiconsIcon className="size-5" icon={Search01Icon} />
 						</Button>
 					</Link>
 					<Link className="hidden lg:block" href="/">
 						<Button aria-label="Watchlist" size="icon" variant="ghost">
 							<HugeiconsIcon
-								className="size-4.5"
+								className="size-5"
 								icon={BookmarkAdd01Icon}
 							/>
 						</Button>
 					</Link>
-					<ThemeToggle />
 					<Link href="/">
 						<Button aria-label="Profile" size="icon" variant="ghost">
-							<HugeiconsIcon className="size-4.5" icon={UserIcon} />
+							<HugeiconsIcon className="size-5" icon={UserIcon} />
 						</Button>
 					</Link>
 					<Link className="hidden lg:block" href="/">
 						<GlassButton
-							className="text-accent-gold font-semibold"
+							className="text-primary font-semibold rounded-lg text-xs h-9 px-4"
 							glassVariant="liquid"
 							size="sm"
 						>

@@ -666,9 +666,3 @@ export const movies: Movie[] = [
 export function getMovieById(id: string): Movie | undefined {
 	return movies.find((movie) => movie.id === id)
 }
-
-export function getSimilar(ids: string[]) {
-	return ids
-		.map((id) => getMovieById(id))
-		.filter((movie) => movie !== undefined)
-}

@@ -14,6 +14,7 @@ import { useState } from "react"
 import { Logo } from "@/components/shared/logo"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { GlassButton } from "../ui/glasscn/glass-button"
 import { glassSurfaceVariants } from "../ui/glasscn/glass-variants"
 import {
 	Sheet,
@@ -108,12 +109,13 @@ export function MobileNav() {
 									Profile
 								</Link>
 								<Link className="mt-1" href="/login">
-									<Button
-										className="w-full"
+									<GlassButton
+										className="w-full text-primary rounded-lg"
+										glassVariant="liquid"
 										onClick={() => setOpen(false)}
 									>
 										Sign in
-									</Button>
+									</GlassButton>
 								</Link>
 							</div>
 						</SheetFooter>

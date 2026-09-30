@@ -10,7 +10,10 @@ type LogoProps = {
 export function Logo({ className, markOnly = false }: LogoProps) {
 	return (
 		<span className={cn("inline-flex items-center gap-1", className)}>
-			<HugeiconsIcon className="rotate-z-180 rotate-x-180 text-primary" icon={CameraVideoIcon} />
+			<HugeiconsIcon
+				className="rotate-z-180 rotate-x-180 text-primary"
+				icon={CameraVideoIcon}
+			/>
 			{!markOnly && (
 				<span className="flex flex-col leading-none">
 					<span className="text-xl font-semibold leading-4 text-foreground">

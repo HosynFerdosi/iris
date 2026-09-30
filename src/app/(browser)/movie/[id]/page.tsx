@@ -17,8 +17,9 @@ import { CastCrewSection } from "@/features/movies/components/cast-crew-section"
 import { DetailsFacts } from "@/features/movies/components/details-facts"
 import { DetailsHero } from "@/features/movies/components/details-hero"
 import { ReviewsSection } from "@/features/movies/components/reviews-section"
+import { getSimilar } from "@/lib/data/func"
 import { getGenreById } from "@/lib/data/genres"
-import { getMovieById, getSimilar } from "@/lib/data/movies"
+import { getMovieById } from "@/lib/data/movies"
 import { getReviewsByMediaId } from "@/lib/data/reviews"
 
 export async function generateMetadata({
@@ -46,7 +47,7 @@ export default async function Page({ params }: PageProps<"/movie/[id]">) {
 
 	if (!movie) notFound()
 
-	const similar = getSimilar(movie.similarIds)
+	const similar = getSimilar(movie)
 	const reviews = getReviewsByMediaId(movie.id)
 	const primaryGenre = movie.genreIds[0]
 		? getGenreById(movie.genreIds[0])
