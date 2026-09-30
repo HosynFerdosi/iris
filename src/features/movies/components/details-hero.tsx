@@ -39,7 +39,7 @@ export function DetailsHero({ item }: DetailsHeroProps) {
 					alt=""
 					aspect="auto"
 					preload
-					sizes=""
+					sizes="200vw"
 					src={item.backdropPath}
 				/>
 				<div className="absolute inset-0 bg-linear-to-t from-background via-background/60 to-background/20" />

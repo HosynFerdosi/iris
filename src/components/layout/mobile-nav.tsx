@@ -49,7 +49,7 @@ export function MobileNav() {
 							size="icon"
 							variant="ghost"
 						>
-							<HugeiconsIcon icon={Menu01Icon} size={22} />
+							<HugeiconsIcon className="size-5" icon={Menu01Icon} />
 						</Button>
 					}
 				/>

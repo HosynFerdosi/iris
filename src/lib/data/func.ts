@@ -49,3 +49,8 @@ export function getUpcoming(limit = 12) {
 		)
 		.slice(0, limit)
 }
+
+export function getByGenre(genreId: string, type?: "movie" | "tv") {
+	const pool = type ? data.filter((item) => item.type === type) : data
+	return pool.filter((item) => item.genreIds.includes(genreId))
+}

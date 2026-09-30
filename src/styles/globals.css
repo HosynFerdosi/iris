@@ -142,3 +142,17 @@
 		@apply font-sans;
 	}
 }
+
+@theme {
+	--animate-pan-down: pan-down 12s linear infinite alternate;
+
+	@keyframes pan-down {
+		from {
+			object-position: center top;
+		}
+
+		to {
+			object-position: center bottom;
+		}
+	}
+}

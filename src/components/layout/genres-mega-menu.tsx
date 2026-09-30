@@ -15,7 +15,7 @@ export function GenresMegaMenu() {
 		<NavigationMenu>
 			<NavigationMenuList>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger className="bg-transparent px-3 py-2 data-[state=open]:bg-transparent">
+					<NavigationMenuTrigger className="bg-transparent text-muted-foreground px-3 py-2 data-[state=open]:bg-transparent">
 						Genres
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>

@@ -98,7 +98,7 @@ export function SiteFooter() {
 
 				<div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
 					<p>
-						© {new Date().getFullYear()} Marquee. A concept product for
+						© {new Date().getFullYear()} Iris. A concept product for
 						demonstration.
 					</p>
 					<div className="flex gap-5">

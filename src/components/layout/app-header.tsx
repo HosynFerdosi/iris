@@ -38,15 +38,18 @@ export function SiteHeader() {
 		>
 			<div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-4 sm:px-6 lg:px-10">
 				<div className="flex items-center gap-8">
-					<Link className="flex items-center" href="/">
+					<Link
+						className="flex items-center focus-visible:bg-muted outline-none rounded-md"
+						href="/"
+					>
 						<Logo />
 					</Link>
 
-					<nav className="hidden items-center gap-6 lg:flex">
+					<nav className="hidden items-center gap-3 lg:flex">
 						{navLinks.map((link) => (
 							<Link
 								className={cn(
-									"text-sm font-medium transition-colors hover:text-primary no-underline",
+									"flex items-center gap-2 rounded-2xl px-3 py-2 text-sm font-medium transition-all outline-none hover:bg-muted focus:bg-muted hover:text-primary no-underline",
 									pathname === link.href
 										? "text-foreground"
 										: "text-muted-foreground"
@@ -61,34 +64,33 @@ export function SiteHeader() {
 					</nav>
 				</div>
 
-				<div className="flex items-center gap-1 sm:gap-3">
-					<Link href="/">
-						<Button aria-label="Search" size="icon" variant="ghost">
-							<HugeiconsIcon className="size-5" icon={Search01Icon} />
-						</Button>
-					</Link>
-					<Link className="hidden lg:block" href="/">
-						<Button aria-label="Watchlist" size="icon" variant="ghost">
-							<HugeiconsIcon
-								className="size-5"
-								icon={BookmarkAdd01Icon}
-							/>
-						</Button>
-					</Link>
-					<Link href="/">
-						<Button aria-label="Profile" size="icon" variant="ghost">
-							<HugeiconsIcon className="size-5" icon={UserIcon} />
-						</Button>
-					</Link>
-					<Link className="hidden lg:block" href="/">
-						<GlassButton
-							className="text-primary font-semibold rounded-lg text-xs h-9 px-4"
-							glassVariant="liquid"
-							size="sm"
-						>
-							Sign in
-						</GlassButton>
-					</Link>
+				<div className="flex items-center gap-3">
+					<Button aria-label="Search" size="icon" variant="ghost">
+						<HugeiconsIcon className="size-5" icon={Search01Icon} />
+					</Button>
+					<Button
+						aria-label="Watchlist"
+						className="max-lg:hidden"
+						size="icon"
+						variant="ghost"
+					>
+						<HugeiconsIcon className="size-5" icon={BookmarkAdd01Icon} />
+					</Button>
+					<Button aria-label="Profile" size="icon" variant="ghost">
+						<HugeiconsIcon className="size-5" icon={UserIcon} />
+					</Button>
+
+					<GlassButton
+						className="text-primary font-semibold rounded-lg text-xs h-9 px-4"
+						glassVariant="liquid"
+						nativeButton={false}
+						render={
+							<Link className="max-lg:hidden" href="/">
+								Sign in
+							</Link>
+						}
+						size="sm"
+					></GlassButton>
 					<MobileNav />
 				</div>
 			</div>

@@ -1327,6 +1327,17 @@ export const people: Person[] = [
 		biography: "American novelist and creator of A Song of Ice and Fire.",
 		filmographyIds: ["tv-game-of-thrones", "tv-house-of-the-dragon"],
 	},
+	{
+		id: "p-chris-evans",
+		name: "Chris Evans",
+		profilePath: "/images/people/chris-evans.jpg",
+		knownFor: "Acting",
+		birthYear: 1981,
+		birthplace: "Boston, Massachusetts, USA",
+		biography:
+			"American actor best known for playing Steve Rogers / Captain America in the Marvel Cinematic Universe.",
+		filmographyIds: ["m-avengers-doomsday"],
+	},
 ]
 
 export function getPersonById(id: string): Person | undefined {
