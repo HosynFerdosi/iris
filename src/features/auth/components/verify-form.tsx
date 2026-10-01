@@ -69,7 +69,7 @@ export function VerifyForm() {
 
 			<div className="mt-5 text-center text-sm text-muted-foreground">
 				<button
-					className="font-medium text-accent-gold hover:underline"
+					className="font-medium text-primary hover:underline"
 					type="button"
 				>
 					Resend code

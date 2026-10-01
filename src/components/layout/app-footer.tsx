@@ -53,21 +53,21 @@ export function SiteFooter() {
 						<div className="mt-5 flex items-center gap-3">
 							<Link
 								aria-label="Marquee on Twitter"
-								className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent-gold/40 hover:text-accent-gold"
+								className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
 								href="#"
 							>
 								<HugeiconsIcon icon={NewTwitterIcon} size={16} />
 							</Link>
 							<Link
 								aria-label="Marquee on Instagram"
-								className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent-gold/40 hover:text-accent-gold"
+								className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
 								href="#"
 							>
 								<HugeiconsIcon icon={InstagramIcon} size={16} />
 							</Link>
 							<Link
 								aria-label="Marquee on GitHub"
-								className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent-gold/40 hover:text-accent-gold"
+								className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
 								href="#"
 							>
 								<HugeiconsIcon icon={Github01Icon} size={16} />

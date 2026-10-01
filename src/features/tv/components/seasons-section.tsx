@@ -54,7 +54,7 @@ export function SeasonsSection({ seasons }: SeasonsSectionProps) {
 			<div className="space-y-3">
 				{activeSeason.episodes.map((episode) => (
 					<div
-						className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-3 transition-colors hover:border-accent-gold/30 sm:flex-row"
+						className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-3 transition-colors hover:border-primary/30 sm:flex-row"
 						key={episode.id}
 					>
 						<div className="relative w-full shrink-0 sm:w-48">

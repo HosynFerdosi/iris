@@ -26,7 +26,7 @@ export default function DiscoverPage() {
 	return (
 		<div className="pb-20">
 			<div className="mx-auto max-w-[1600px] px-4 pt-8 sm:px-6 lg:px-10">
-				<p className="text-sm font-medium uppercase tracking-wide text-accent-gold">
+				<p className="text-sm font-medium uppercase tracking-wide text-primary">
 					Discover
 				</p>
 				<h1 className="mt-2 max-w-2xl text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
@@ -54,10 +54,10 @@ export default function DiscoverPage() {
 						<div className="absolute inset-0 z-5 bg-linear-to-t from-background to-transparent" />
 						<div className="absolute inset-0 z-5 bg-linear-to-r from-background via-transparent to-background" />
 						<div className="relative z-10 max-w-xl p-6 sm:p-10">
-							<p className="text-xs font-medium uppercase tracking-wide text-accent-gold">
+							<p className="text-xs font-medium uppercase tracking-wide text-primary">
 								Editor's spotlight
 							</p>
-							<h2 className="mt-2 text-2xl font-bold text-white transition-colors group-hover:text-accent-gold sm:text-3xl">
+							<h2 className="mt-2 text-2xl font-bold text-white transition-colors group-hover:text-primary sm:text-3xl">
 								{spotlight.title}
 							</h2>
 							<p className="mt-2 line-clamp-2 text-sm text-white/70">
@@ -94,7 +94,7 @@ export default function DiscoverPage() {
 						On the horizon
 					</h2>
 					<Link
-						className="text-sm font-medium text-accent-gold hover:underline"
+						className="text-sm font-medium text-primary hover:underline"
 						href="/coming-soon"
 					>
 						View all
@@ -115,7 +115,7 @@ export default function DiscoverPage() {
 							/>
 							<div className="absolute inset-0 bg-linear-to-t from-overlay-scrim/85 to-transparent" />
 							<div className="absolute inset-x-0 bottom-0 p-4">
-								<p className="text-xs text-accent-gold">
+								<p className="text-xs text-primary">
 									{new Date(
 										"releaseDate" in item
 											? item.releaseDate
@@ -125,7 +125,7 @@ export default function DiscoverPage() {
 										year: "numeric",
 									})}
 								</p>
-								<h3 className="mt-0.5 font-semibold text-white group-hover:text-accent-gold transition-colors">
+								<h3 className="mt-0.5 font-semibold text-white group-hover:text-primary transition-colors">
 									{item.title}
 								</h3>
 							</div>
@@ -141,7 +141,7 @@ export default function DiscoverPage() {
 				<div className="scrollbar-none flex gap-3 overflow-x-auto pb-2">
 					{genres.slice(0, 10).map((genre) => (
 						<Link
-							className="shrink-0 rounded-full border border-border px-4 py-2 text-sm text-foreground/80 transition-colors hover:border-accent-gold/40 hover:text-foreground"
+							className="shrink-0 rounded-full border border-border px-4 py-2 text-sm text-foreground/80 transition-colors hover:border-primary/40 hover:text-foreground"
 							href={`/genres?genre=${genre.id}`}
 							key={genre.id}
 						>

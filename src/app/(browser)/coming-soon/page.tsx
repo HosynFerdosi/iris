@@ -20,7 +20,7 @@ export default function ComingSoonPage() {
 	return (
 		<div className="pb-20">
 			<div className="mx-auto max-w-[1600px] px-4 pt-8 sm:px-6 lg:px-10">
-				<p className="text-sm font-medium uppercase tracking-wide text-accent-gold">
+				<p className="text-sm font-medium uppercase tracking-wide text-primary">
 					Coming Soon
 				</p>
 				<h1 className="mt-2 max-w-2xl text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
@@ -46,7 +46,7 @@ export default function ComingSoonPage() {
 						<div className="absolute inset-0 bg-linear-to-t from-overlay-scrim/95 via-overlay-scrim/40 to-transparent" />
 						<div className="relative z-10 max-w-xl p-6 sm:p-10">
 							<Badge className="mb-3">Most anticipated</Badge>
-							<h2 className="text-3xl font-bold text-white transition-colors group-hover:text-accent-gold sm:text-4xl">
+							<h2 className="text-3xl font-bold text-white transition-colors group-hover:text-primary sm:text-4xl">
 								{featured.title}
 							</h2>
 							<p className="mt-2 flex items-center gap-1.5 text-sm text-white/70">
@@ -104,7 +104,7 @@ export default function ComingSoonPage() {
 												year: "numeric",
 											})}
 										</p>
-										<h3 className="mt-1 font-semibold text-foreground group-hover:text-accent-gold transition-colors">
+										<h3 className="mt-1 font-semibold text-foreground group-hover:text-primary transition-colors">
 											{item.title}
 										</h3>
 										<p className="mt-1 line-clamp-1 text-sm text-muted-foreground">

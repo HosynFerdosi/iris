@@ -31,7 +31,7 @@ export function SectionHeader({
 			</div>
 			{href && (
 				<Link
-					className="flex shrink-0 items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-accent-gold"
+					className="flex shrink-0 items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 					href={href as Route}
 				>
 					{hrefLabel}

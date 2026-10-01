@@ -23,7 +23,7 @@ export default function MoviesPage() {
 				<div className="absolute inset-0 bg-linear-to-t from-background via-background/60 to-background/10" />
 				<div className="absolute inset-0 bg-linear-to-r from-background/70 via-transparent to-transparent" />
 				<div className="absolute inset-0 mx-auto flex h-full max-w-[1600px] flex-col justify-end px-4 pb-10 sm:px-6 lg:px-10">
-					<p className="text-sm font-medium uppercase tracking-wide text-accent-gold">
+					<p className="text-sm font-medium uppercase tracking-wide text-primary">
 						Movies
 					</p>
 					<h1 className="mt-2 max-w-2xl text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">

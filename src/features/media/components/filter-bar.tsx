@@ -91,7 +91,7 @@ export function FilterBar() {
 							<HugeiconsIcon icon={FilterIcon} size={16} />
 							Filters
 							{hasActiveFilters && (
-								<span className="ml-1 flex size-1.5 rounded-full bg-accent-gold" />
+								<span className="ml-1 flex size-1.5 rounded-full bg-primary" />
 							)}
 						</Button>
 					}

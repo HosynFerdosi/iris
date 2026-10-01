@@ -51,7 +51,7 @@ export function MediaRail({
 					dragFree: true,
 				}}
 			>
-				<CarouselContent className="ml-0 gap-4 px-4 sm:px-6 lg:px-10">
+				<CarouselContent className="ml-0 gap-4 px-4 sm:px-6 lg:px-10 py-2">
 					{items.map((item, index) => (
 						<CarouselItem
 							className="basis-[38vw] p-0 sm:basis-[26vw] md:basis-[18vw] lg:basis-[14vw]"

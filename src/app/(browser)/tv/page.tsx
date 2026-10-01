@@ -42,7 +42,7 @@ export default function TvPage() {
 										? "Returning series"
 										: "Complete series"}
 								</p>
-								<h2 className="mt-1 text-xl font-bold text-white transition-colors group-hover:text-accent-gold sm:text-2xl">
+								<h2 className="mt-1 text-xl font-bold text-white transition-colors group-hover:text-primary sm:text-2xl">
 									{show.title}
 								</h2>
 							</div>

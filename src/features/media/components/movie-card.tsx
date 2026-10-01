@@ -31,7 +31,7 @@ export function MovieCard({ item, className, preload }: MovieCardProps) {
 			whileHover={{ y: -4 }}
 		>
 			<Link
-				className="block focus-visible:outline-none"
+				className="block focus-visible:outline-none focus-visible:ring-2 ring-primary rounded-lg transition-all focus-visible:p-2"
 				href={href as Route}
 			>
 				<div className="relative overflow-hidden rounded-lg ring-1 ring-white/5 transition-shadow duration-300 group-hover:shadow-2xl group-hover:shadow-black/40 group-focus-visible:ring-2 group-focus-visible:ring-ring">

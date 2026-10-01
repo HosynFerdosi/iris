@@ -135,7 +135,7 @@ export function ReviewsSection({ item, reviews }: ReviewsSectionProps) {
 											<HugeiconsIcon
 												className={
 													score <= draftRating
-														? "fill-accent-gold text-accent-gold"
+														? "fill-primary text-primary"
 														: "text-border"
 												}
 												icon={StarIcon}
