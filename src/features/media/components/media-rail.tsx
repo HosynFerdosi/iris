@@ -32,8 +32,8 @@ export function MediaRail({
 	if (items.length === 0) return null
 
 	return (
-		<section className={cn("relative", className)}>
-			<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+		<section className={cn("relative max-w-[1600px] mx-auto", className)}>
+			<div className="px-4 sm:px-6 lg:px-10">
 				<SectionHeader
 					className="mb-4"
 					description={description}
@@ -44,7 +44,7 @@ export function MediaRail({
 			</div>
 
 			<Carousel
-				className="w-full pr-5"
+				className="w-full pr-4 sm:pr-6 lg:pr-10"
 				opts={{
 					align: "start",
 					containScroll: "trimSnaps",

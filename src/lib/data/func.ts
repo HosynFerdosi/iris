@@ -2,7 +2,7 @@ import type { Media } from "../types/media"
 import { movies } from "./movies"
 import { tvShows } from "./tv"
 
-const data: Media[] = [...movies, ...tvShows]
+export const data: Media[] = [...movies, ...tvShows]
 
 export function getMediaById(id: string) {
 	return data.find((item) => item.id === id)
