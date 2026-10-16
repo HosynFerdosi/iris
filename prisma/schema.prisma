@@ -1,0 +1,221 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ───────────── Genre ─────────────
+
+model Genre {
+  id           String       @id @default(cuid())
+  name         String       @unique
+  slug         String       @unique
+  description  String
+  backdropPath String
+  media        MediaGenre[]
+}
+
+// ───────────── Media (Movie + TV) ─────────────
+
+model Media {
+  id               String  @id @default(cuid())
+  slug             String
+  type             String // "movie" | "tv"
+  title            String
+  tagline          String?
+  overview         String
+  posterPath       String
+  backdropPath     String
+  status           String // "released" | "upcoming" | "returning" | "ended"
+  rating           Float   @default(0)
+  ratingCount      Int     @default(0)
+  popularity       Float   @default(0)
+  trailerTitle     String?
+  countryOfOrigin  String
+  originalLanguage String
+
+  // Only Movie
+  releaseDate    DateTime?
+  runtimeMinutes Int?
+
+  // Only TV
+  firstAirDate DateTime?
+  lastAirDate  DateTime?
+
+  genres   MediaGenre[]
+  cast     CastCredit[]
+  crew     CrewCredit[]
+  gallery  MediaGalleryImage[]
+  networks MediaNetwork[]
+  seasons  Season[]
+  reviews  Review[]
+
+  // similarIds (self many-to-many)
+  similarTo   MediaSimilar[] @relation("SimilarFrom")
+  similarFrom MediaSimilar[] @relation("SimilarTo")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([type])
+  @@index([popularity])
+  @@index([rating])
+}
+
+model MediaGenre {
+  mediaId String
+  genreId String
+  media   Media  @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  genre   Genre  @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@id([mediaId, genreId])
+  @@index([genreId])
+}
+
+model MediaSimilar {
+  mediaId   String
+  similarId String
+  media     Media  @relation("SimilarFrom", fields: [mediaId], references: [id], onDelete: Cascade)
+  similar   Media  @relation("SimilarTo", fields: [similarId], references: [id], onDelete: Cascade)
+
+  @@id([mediaId, similarId])
+}
+
+// galleryPaths: string[]
+model MediaGalleryImage {
+  id       String @id @default(cuid())
+  mediaId  String
+  path     String
+  position Int    @default(0)
+  media    Media  @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@index([mediaId])
+}
+
+// networks: string[]
+model MediaNetwork {
+  id      String @id @default(cuid())
+  mediaId String
+  name    String
+  media   Media  @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@index([mediaId])
+}
+
+// ───────────── Person & Credits ─────────────
+
+model Person {
+  id          String @id @default(cuid())
+  name        String
+  slug        String @unique
+  profilePath String
+  knownFor    String // "Acting" | "Directing" | "Writing" | "Production" | "Composer"
+  birthYear   Int
+  birthplace  String
+  biography   String
+
+  castCredits CastCredit[]
+  crewCredits CrewCredit[]
+
+  @@index([name])
+}
+
+model CastCredit {
+  id            String @id @default(cuid())
+  mediaId       String
+  personId      String
+  characterName String
+  media         Media  @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  person        Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@index([mediaId])
+  @@index([personId])
+}
+
+model CrewCredit {
+  id       String @id @default(cuid())
+  mediaId  String
+  personId String
+  job      String
+  media    Media  @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  person   Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@index([mediaId])
+  @@index([personId])
+}
+
+// ───────────── Seasons & Episodes ─────────────
+
+model Season {
+  id           String    @id @default(cuid())
+  mediaId      String
+  seasonNumber Int
+  name         String
+  episodeCount Int       @default(0)
+  airYear      Int
+  overview     String
+  posterPath   String
+  media        Media     @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  episodes     Episode[]
+
+  @@unique([mediaId, seasonNumber])
+}
+
+model Episode {
+  id             String   @id @default(cuid())
+  seasonId       String
+  episodeNumber  Int
+  name           String
+  overview       String
+  runtimeMinutes Int
+  airDate        DateTime
+  stillPath      String
+  rating         Float    @default(0)
+  season         Season   @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+
+  @@unique([seasonId, episodeNumber])
+}
+
+// ───────────── Users, Reviews, Replies ─────────────
+
+model User {
+  id         String        @id @default(cuid())
+  name       String
+  avatarPath String
+  reviews    Review[]
+  replies    ReviewReply[]
+  createdAt  DateTime      @default(now())
+}
+
+model Review {
+  id        String        @id @default(cuid())
+  mediaId   String
+  userId    String
+  rating    Float
+  title     String
+  body      String
+  likeCount Int           @default(0)
+  createdAt DateTime      @default(now())
+  media     Media         @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  replies   ReviewReply[]
+
+  @@index([mediaId])
+  @@index([userId])
+}
+
+model ReviewReply {
+  id        String   @id @default(cuid())
+  reviewId  String
+  userId    String
+  body      String
+  likeCount Int      @default(0)
+  createdAt DateTime @default(now())
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([reviewId])
+}
