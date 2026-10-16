@@ -1,5 +1,22 @@
+import { Fragment, type ReactNode } from "react"
 import { Skeleton } from "../ui/skeleton"
 import { SectionHeader } from "./section-header"
+
+export function SkeletonList({
+	children,
+	count,
+}: {
+	children: ReactNode
+	count: number
+}) {
+	return (
+		<>
+			{Array.from({ length: count }).map((_, index) => (
+				<Fragment key={index.toString()}>{children}</Fragment>
+			))}
+		</>
+	)
+}
 
 export function PosterCardSkeleton() {
 	return (
@@ -14,9 +31,9 @@ export function PosterCardSkeleton() {
 export function MediaGridSkeleton({ count = 12 }: { count?: number }) {
 	return (
 		<div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-			{Array.from({ length: count }).map((_, i) => (
-				<PosterCardSkeleton key={i.toString()} />
-			))}
+			<SkeletonList count={count}>
+				<PosterCardSkeleton />
+			</SkeletonList>
 		</div>
 	)
 }
@@ -26,14 +43,11 @@ export function RailSkeleton({ count = 6 }: { count?: number }) {
 		<div className="space-y-4">
 			<Skeleton className="h-7 w-48" />
 			<div className="scrollbar-none flex gap-4 overflow-x-hidden px-4 sm:px-6 lg:px-10">
-				{Array.from({ length: count }).map((_, i) => (
-					<div
-						className="w-[42vw] shrink-0 sm:w-[26vw] md:w-[18vw] lg:w-[14vw]"
-						key={i.toString()}
-					>
+				<SkeletonList count={count}>
+					<div className="w-[42vw] shrink-0 sm:w-[26vw] md:w-[18vw] lg:w-[14vw]">
 						<PosterCardSkeleton />
 					</div>
-				))}
+				</SkeletonList>
 			</div>
 		</div>
 	)
@@ -81,9 +95,9 @@ export function ProfileHeaderSkeleton() {
 export function FilterBarSkeleton() {
 	return (
 		<div className="flex flex-wrap gap-3">
-			{Array.from({ length: 4 }).map((_, i) => (
-				<Skeleton className="h-10 w-32" key={i.toString()} />
-			))}
+			<SkeletonList count={4}>
+				<Skeleton className="h-10 w-32" />
+			</SkeletonList>
 		</div>
 	)
 }
@@ -156,5 +170,25 @@ export function CastCrewSectionSkeleton() {
 				))}
 			</div>
 		</section>
+	)
+}
+
+export function GenreGridSkeleton() {
+	return (
+		<div className="mx-auto mt-10 grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-10">
+			<SkeletonList count={12}>
+				<Skeleton className="aspect-16/10 rounded-2xl ring-1 ring-transparent scroll-mt-24" />
+			</SkeletonList>
+		</div>
+	)
+}
+
+export function GenresListSkeleton() {
+	return (
+		<div className="grid grid-cols-3 gap-7.5">
+			<SkeletonList count={12}>
+				<Skeleton className="w-3/4 h-4 rounded-full" />
+			</SkeletonList>
+		</div>
 	)
 }

@@ -1,7 +1,7 @@
 import type { Route } from "next"
 import Link from "next/link"
 import { AppImage } from "@/components/shared/image"
-import type { Genre } from "@/lib/types/media"
+import type { Genre } from "@/generated/prisma/browser"
 
 type Props = {
 	genre: Genre
@@ -12,7 +12,7 @@ export default function GenreItem({ genre, index }: Props) {
 	return (
 		<Link
 			className="group relative aspect-16/10 overflow-hidden rounded-2xl ring-1 ring-white/5 scroll-mt-24"
-			href={`/genre/${genre.id}` as Route}
+			href={`/genre/${genre.slug}` as Route}
 			id={genre.id}
 			key={genre.id}
 			style={{ animationDelay: `${index * 100}ms` }}
