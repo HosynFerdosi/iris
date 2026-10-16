@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/shared/skeleton"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function DiscoverLoading() {
 	return (

@@ -1,8 +1,5 @@
-import {
-	HeroSkeleton,
-	ReviewCardSkeleton,
-	Skeleton,
-} from "@/components/shared/skeleton"
+import { HeroSkeleton, ReviewCardSkeleton } from "@/components/shared/skeleton"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function MovieLoading() {
 	return (

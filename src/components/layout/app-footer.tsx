@@ -5,6 +5,7 @@ import {
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import type { Route } from "next"
+import { cacheLife } from "next/cache"
 import Link from "next/link"
 import { Logo } from "@/components/shared/logo"
 import { genres } from "@/lib/data/genres"
@@ -36,7 +37,11 @@ const footerColumns = [
 	},
 ]
 
-export function SiteFooter() {
+export async function SiteFooter() {
+	"use cache"
+
+	cacheLife("weeks")
+
 	return (
 		<footer className="border-t border-border bg-surface/40">
 			<div className="mx-auto max-w-[1600px] px-4 py-14 sm:px-6 lg:px-10">
@@ -99,7 +104,7 @@ export function SiteFooter() {
 				<div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
 					<p>
 						© {new Date().getFullYear()} Iris. A concept product for
-						demonstration.
+						demonstration. build by <u>Hosyn Ferdosi</u>
 					</p>
 					<div className="flex gap-5">
 						<Link className="hover:text-foreground" href="#">

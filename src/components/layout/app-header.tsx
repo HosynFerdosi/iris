@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button"
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
 import { glassSurfaceVariants } from "@/components/ui/glasscn/glass-variants"
 import { cn } from "@/lib/utils"
+import { ThemeToggle } from "./theme-toggle"
 
 const navLinks = [
 	{ href: "/movies", label: "Movies" },
@@ -76,10 +77,10 @@ export function SiteHeader() {
 					>
 						<HugeiconsIcon className="size-5" icon={BookmarkAdd01Icon} />
 					</Button>
+					<ThemeToggle />
 					<Button aria-label="Profile" size="icon" variant="ghost">
 						<HugeiconsIcon className="size-5" icon={UserIcon} />
 					</Button>
-
 					<GlassButton
 						className="text-primary font-semibold rounded-lg text-xs h-9 px-4"
 						glassVariant="liquid"

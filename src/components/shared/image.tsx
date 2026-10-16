@@ -3,7 +3,7 @@
 import { ImageNotFound01Icon, UserIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import NextImage, { type ImageProps as NextImageProps } from "next/image"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 
 type ImageAspect = "poster" | "backdrop" | "square" | "avatar" | "auto"
@@ -36,12 +36,33 @@ export function AppImage({
 	sizes,
 	...props
 }: AppImageProps) {
+	const imageRef = useRef<HTMLImageElement>(null)
+
 	const [status, setStatus] = useState<"loading" | "loaded" | "error">(
 		src ? "loading" : "error"
 	)
 
+	const handleLoad = useCallback(() => {
+		setStatus("loaded")
+	}, [])
+
+	const handleError = useCallback(() => {
+		setStatus("error")
+	}, [])
+
 	useEffect(() => {
-		setStatus(src ? "loading" : "error")
+		if (!src) {
+			setStatus("error")
+			return
+		}
+
+		const image = imageRef.current
+
+		if (image?.complete) {
+			setStatus(image.naturalWidth > 0 ? "loaded" : "error")
+		} else {
+			setStatus("loading")
+		}
 	}, [src])
 
 	const showFallback = status === "error" || !src
@@ -49,7 +70,7 @@ export function AppImage({
 	return (
 		<div
 			className={cn(
-				"relative overflow-hidden bg-surface-raised h-full",
+				"relative h-full overflow-hidden bg-surface-raised",
 				aspectClassMap[aspect],
 				containerClassName
 			)}
@@ -64,6 +85,7 @@ export function AppImage({
 						}
 						size={aspect === "avatar" ? 20 : 32}
 					/>
+
 					{aspect !== "avatar" && (
 						<span className="px-4 text-center text-xs leading-tight">
 							Image unavailable
@@ -72,6 +94,7 @@ export function AppImage({
 				</div>
 			) : (
 				<NextImage
+					{...props}
 					alt={alt}
 					className={cn(
 						"object-cover transition-all duration-500",
@@ -79,19 +102,21 @@ export function AppImage({
 						className
 					)}
 					fill={fill ?? true}
+					key={src}
 					loading="eager"
-					onError={() => setStatus("error")}
-					onLoad={() => setStatus("loaded")}
+					onError={handleError}
+					onLoad={handleLoad}
+					ref={imageRef}
 					sizes={
 						sizes ??
 						"(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 15vw"
 					}
 					src={src}
-					{...props}
 				/>
 			)}
+
 			{status === "loading" && src && (
-				<div aria-hidden className="absolute inset-0 shimmer" />
+				<div aria-hidden="true" className="absolute inset-0 shimmer" />
 			)}
 		</div>
 	)

@@ -1,6 +1,7 @@
 import { Skeleton } from "../ui/skeleton"
+import { SectionHeader } from "./section-header"
 
-function PosterCardSkeleton() {
+export function PosterCardSkeleton() {
 	return (
 		<div className="w-full">
 			<Skeleton className="aspect-2/3 w-full rounded-lg" />
@@ -10,7 +11,7 @@ function PosterCardSkeleton() {
 	)
 }
 
-function MediaGridSkeleton({ count = 12 }: { count?: number }) {
+export function MediaGridSkeleton({ count = 12 }: { count?: number }) {
 	return (
 		<div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
 			{Array.from({ length: count }).map((_, i) => (
@@ -20,7 +21,7 @@ function MediaGridSkeleton({ count = 12 }: { count?: number }) {
 	)
 }
 
-function RailSkeleton({ count = 6 }: { count?: number }) {
+export function RailSkeleton({ count = 6 }: { count?: number }) {
 	return (
 		<div className="space-y-4">
 			<Skeleton className="h-7 w-48" />
@@ -38,7 +39,7 @@ function RailSkeleton({ count = 6 }: { count?: number }) {
 	)
 }
 
-function HeroSkeleton() {
+export function HeroSkeleton() {
 	return (
 		<div className="relative h-[70vh] w-full overflow-hidden">
 			<Skeleton className="size-full rounded-none" />
@@ -52,7 +53,7 @@ function HeroSkeleton() {
 	)
 }
 
-function ReviewCardSkeleton() {
+export function ReviewCardSkeleton() {
 	return (
 		<div className="flex gap-3 rounded-xl border border-border p-4">
 			<Skeleton className="size-10 shrink-0 rounded-full" />
@@ -65,7 +66,7 @@ function ReviewCardSkeleton() {
 	)
 }
 
-function ProfileHeaderSkeleton() {
+export function ProfileHeaderSkeleton() {
 	return (
 		<div className="flex items-center gap-5">
 			<Skeleton className="size-20 shrink-0 rounded-full" />
@@ -77,7 +78,7 @@ function ProfileHeaderSkeleton() {
 	)
 }
 
-function FilterBarSkeleton() {
+export function FilterBarSkeleton() {
 	return (
 		<div className="flex flex-wrap gap-3">
 			{Array.from({ length: 4 }).map((_, i) => (
@@ -87,13 +88,73 @@ function FilterBarSkeleton() {
 	)
 }
 
-export {
-	Skeleton,
-	PosterCardSkeleton,
-	MediaGridSkeleton,
-	RailSkeleton,
-	HeroSkeleton,
-	ReviewCardSkeleton,
-	ProfileHeaderSkeleton,
-	FilterBarSkeleton,
+export function DetailsHeroSkeleton() {
+	return (
+		<section className="relative w-full overflow-hidden">
+			<div className="absolute inset-0">
+				<Skeleton className="size-full rounded-none" />
+
+				<div className="absolute inset-0 bg-linear-to-t from-background via-background/60 to-background/20" />
+				<div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/40 to-transparent" />
+			</div>
+
+			<div className="relative mx-auto max-w-[1600px] px-4 pb-12 pt-28 sm:px-6 lg:px-10 lg:pb-16 lg:pt-36">
+				<div className="flex flex-col gap-8 md:flex-row md:items-end">
+					<div className="hidden w-52 shrink-0 md:block lg:w-64">
+						<Skeleton className="aspect-2/3 rounded-xl shadow-2xl" />
+					</div>
+
+					<div className="w-full max-w-2xl">
+						<div className="mb-3 flex flex-wrap gap-2">
+							<Skeleton className="h-4 w-20 rounded-full" />
+							<Skeleton className="h-4 w-24 rounded-full" />
+							<Skeleton className="h-4 w-16 rounded-full" />
+						</div>
+
+						<div className="space-y-3">
+							<Skeleton className="h-9 w-4/5 rounded-md sm:h-11 lg:h-12" />
+							<Skeleton className="h-9 w-2/5 rounded-md sm:h-11 lg:h-12" />
+						</div>
+
+						<Skeleton className="mt-3 h-5 w-3/5 rounded-md" />
+
+						<div className="mt-5 flex flex-wrap items-center gap-4">
+							<Skeleton className="h-5 w-28 rounded-md" />
+							<Skeleton className="h-4 w-12 rounded-md" />
+							<Skeleton className="h-4 w-12 rounded-md" />
+						</div>
+
+						<div className="mt-5 space-y-2">
+							<Skeleton className="h-4 w-full rounded-md" />
+							<Skeleton className="h-4 w-full rounded-md" />
+							<Skeleton className="h-4 w-11/12 rounded-md" />
+						</div>
+
+						<div className="mt-7 flex flex-wrap items-center gap-3">
+							<Skeleton className="h-11 w-36 rounded-md" />
+							<Skeleton className="h-11 w-44 rounded-md" />
+							<Skeleton className="size-11 rounded-full" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	)
+}
+
+export function CastCrewSectionSkeleton() {
+	return (
+		<section>
+			<SectionHeader className="mb-4" title="Cast & crew" />
+			<div className="scrollbar-none flex gap-6 overflow-x-auto pb-2">
+				{Array.from({ length: 5 }).map((_, index) => (
+					<div className="w-30" key={index.toString()}>
+						<Skeleton className="h-50 w-32 rounded-lg ring-1 ring-white/5" />
+						<Skeleton className="mt-3 h-4 w-4/5 rounded-md" />
+						<Skeleton className="mt-2 h-3 w-3/5 rounded-md" />
+					</div>
+				))}
+			</div>
+		</section>
+	)
 }

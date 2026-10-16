@@ -1,26 +1,25 @@
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
+	experimental: {
+		agentFeedback: true,
+		typedEnv: true,
+	},
+	cacheComponents: true,
+	partialPrefetching: true,
 	reactCompiler: true,
 	reactStrictMode: false,
 	typedRoutes: true,
-	experimental: {
-		typedEnv: true,
-		serverActions: {
-			bodySizeLimit: "10mb",
-		},
-	},
 	images: {
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "**",
+		unoptimized: true,
+	},
+	turbopack: {
+		rules: {
+			"*.css": {
+				loaders: ["@tailwindcss/turbopack"],
+				as: "*.css",
 			},
-			{
-				protocol: "http",
-				hostname: "**",
-			},
-		],
+		},
 	},
 	allowedDevOrigins: ["192.168.1.100"],
 }
