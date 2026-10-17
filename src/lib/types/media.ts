@@ -7,6 +7,5 @@ export type Media = MediaGetPayload<{
 				genre: true
 			}
 		}
-		networks: true
 	}
 }>

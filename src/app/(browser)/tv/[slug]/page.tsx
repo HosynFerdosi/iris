@@ -12,22 +12,19 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { MediaGallerySection } from "@/features/media/components/media-gallery-section"
-import { MediaRail } from "@/features/media/components/media-rail"
 import { CastCrewSection } from "@/features/movies/components/cast-crew-section"
 import { DetailsFacts } from "@/features/movies/components/details-facts"
 import { DetailsHero } from "@/features/movies/components/details-hero"
 import { ReviewsSection } from "@/features/movies/components/reviews-section"
 import { SeasonsSection } from "@/features/tv/components/seasons-section"
-import { getSimilar } from "@/lib/data/func"
-import { getGenreById } from "@/lib/data/genres"
+import { findTvShow } from "@/features/tv/server/db/tv.db"
 import { getReviewsByMediaId } from "@/lib/data/reviews"
-import { getTvShowById } from "@/lib/data/tv"
 
 export async function generateMetadata({
 	params,
-}: PageProps<"/tv/[id]">): Promise<Metadata> {
-	const { id } = await params
-	const show = getTvShowById(id)
+}: PageProps<"/tv/[slug]">): Promise<Metadata> {
+	const { slug } = await params
+	const show = await findTvShow(slug)
 	if (!show) return { title: "Show not found" }
 
 	return {
@@ -41,17 +38,17 @@ export async function generateMetadata({
 	}
 }
 
-export default async function TvDetailPage({ params }: PageProps<"/tv/[id]">) {
-	const { id } = await params
-	const show = getTvShowById(id)
+export default async function TvDetailPage({
+	params,
+}: PageProps<"/tv/[slug]">) {
+	const { slug } = await params
+	const show = await findTvShow(slug)
 
 	if (!show) notFound()
 
-	const similar = getSimilar(show)
+	// const similar = getSimilar(show)
 	const reviews = getReviewsByMediaId(show.id)
-	const primaryGenre = show.genreIds[0]
-		? getGenreById(show.genreIds[0])
-		: undefined
+	const primaryGenre = show.genres.length ? show.genres[0].genre : undefined
 
 	return (
 		<div className="pb-20 relative">
@@ -105,23 +102,26 @@ export default async function TvDetailPage({ params }: PageProps<"/tv/[id]">) {
 
 			<div className="mx-auto mt-10 max-w-[1600px] space-y-12 px-4 sm:px-6 lg:px-10">
 				{show.seasons && show.seasons.length > 0 && (
-					<SeasonsSection seasons={show.seasons} />
+					<SeasonsSection
+						backdrop={show.backdropPath}
+						seasons={show.seasons}
+					/>
 				)}
 				<CastCrewSection cast={show.cast} crew={show.crew} />
 				<MediaGallerySection
 					backdropPath={show.backdropPath}
-					galleryPaths={show.galleryPaths}
+					gallery={show.gallery}
 					trailerTitle={show.trailerTitle}
 				/>
 				<DetailsFacts item={show} />
 				<ReviewsSection item={show} reviews={reviews} />
 			</div>
 
-			{similar.length > 0 && (
+			{/* {similar.length > 0 && (
 				<div className="mt-12">
 					<MediaRail items={similar} title="Similar shows" />
 				</div>
-			)}
+			)} */}
 		</div>
 	)
 }

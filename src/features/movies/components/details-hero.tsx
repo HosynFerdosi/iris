@@ -10,10 +10,10 @@ import { Button } from "@/components/ui/button"
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
 import { relaseDate } from "@/lib/utils"
-import type { MovieDetails } from "../server/db/movie.db"
+import type { Movie } from "../server/db/movie.db"
 
 type DetailsHeroProps = {
-	item: MovieDetails
+	item: Movie
 }
 
 export function DetailsHero({ item }: DetailsHeroProps) {

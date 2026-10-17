@@ -13,21 +13,22 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select"
-import type { Season } from "@/lib/types/medias"
+import type { SeasonGetPayload } from "@/generated/prisma/models"
 
 interface SeasonsSectionProps {
-	seasons: Season[]
+	backdrop: string
+	seasons: SeasonGetPayload<{ include: { episodes: true } }>[]
 }
 
-export function SeasonsSection({ seasons }: SeasonsSectionProps) {
+export function SeasonsSection({ seasons, backdrop }: SeasonsSectionProps) {
 	const [activeSeasonId, setActiveSeasonId] = useState<string | null>(
-		seasons[seasons.length - 1]?.id ?? "1"
+		seasons[0].name ?? "Season 1"
 	)
 
 	if (seasons.length === 0) return null
 
 	const activeSeason =
-		seasons.find((s) => s.id === activeSeasonId) ?? seasons[0]
+		seasons.find((s) => s.name === activeSeasonId) ?? seasons[0]
 
 	return (
 		<section>
@@ -39,7 +40,7 @@ export function SeasonsSection({ seasons }: SeasonsSectionProps) {
 					</SelectTrigger>
 					<SelectContent>
 						{seasons.map((season) => (
-							<SelectItem key={season.id} value={season.id}>
+							<SelectItem key={season.id} value={season.name}>
 								{season.name}
 							</SelectItem>
 						))}
@@ -63,7 +64,7 @@ export function SeasonsSection({ seasons }: SeasonsSectionProps) {
 								aspect="backdrop"
 								containerClassName="rounded-lg"
 								sizes="192px"
-								src={episode.stillPath}
+								src={backdrop}
 							/>
 							<div className="absolute inset-0 flex items-center justify-center bg-overlay-scrim/0 transition-colors group-hover:bg-overlay-scrim/40">
 								<span className="flex size-9 items-center justify-center rounded-full bg-white/0 text-white opacity-0 transition-all group-hover:bg-white/90 group-hover:text-black group-hover:opacity-100">

@@ -11,16 +11,6 @@ export type Movie = MediaGetPayload<{
 				genre: true
 			}
 		}
-	}
-}>
-
-export type MovieDetails = MediaGetPayload<{
-	include: {
-		genres: {
-			include: {
-				genre: true
-			}
-		}
 		cast: {
 			include: {
 				person: true
@@ -62,7 +52,7 @@ export const fetchMovies = async () => {
 
 export const findMovie = async (slug: string) => {
 	return prisma.media.findFirst({
-		where: { slug },
+		where: { slug, type: "movie" },
 		include: {
 			genres: {
 				include: {

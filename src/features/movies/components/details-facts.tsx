@@ -29,7 +29,10 @@ export function DetailsFacts({ item }: DetailsFactsProps) {
 	]
 
 	if ("networks" in item && item.networks && item.networks.length > 0) {
-		facts.push({ label: "Network", value: item.networks.join(", ") })
+		facts.push({
+			label: "Network",
+			value: item.networks.map((network) => network.name).join(", "),
+		})
 	}
 
 	return (
