@@ -1,6 +1,6 @@
 import { SectionHeader } from "@/components/shared/section-header"
 import { PersonCard } from "@/features/media/components/person-card"
-import { getPersonById } from "@/lib/data/people"
+import type { Person } from "@/generated/prisma/client"
 import type { CastCredit, CrewCredit } from "@/lib/types/medias"
 
 type CastCrewSectionProps = {
@@ -16,13 +16,14 @@ export function CastCrewSection({ cast, crew }: CastCrewSectionProps) {
 			<SectionHeader className="mb-4" title="Cast & crew" />
 			<div className="scrollbar-none flex gap-6 overflow-x-auto pb-2">
 				{[...cast, ...crew].map((credit, index) => {
-					const person = getPersonById(credit.personId)
-					if (!person) return null
+					if (!("person" in credit)) return null
+					const person = credit.person as Person
+
 					return (
 						<PersonCard
 							key={`${credit.personId}-${index.toString()}`}
 							name={person.name}
-							personId={person.id}
+							personId={person.slug}
 							profilePath={person.profilePath}
 							role={
 								"characterName" in credit

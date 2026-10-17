@@ -9,19 +9,17 @@ import { Rating } from "@/components/shared/rating"
 import { Button } from "@/components/ui/button"
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
-import { getGenreById } from "@/lib/data/genres"
-import type { Movie, TVShow } from "@/lib/types/medias"
+import { relaseDate } from "@/lib/utils"
+import type { MovieDetails } from "../server/db/movie.db"
 
 type DetailsHeroProps = {
-	item: Movie | TVShow
+	item: MovieDetails
 }
 
 export function DetailsHero({ item }: DetailsHeroProps) {
-	const year = new Date(
-		"releaseDate" in item ? item.releaseDate : item.firstAirDate
-	).getFullYear()
-	const genreNames = item.genreIds
-		.map((id) => getGenreById(id))
+	const year = relaseDate(item, item.type as "movie" | "tv")
+	const genreNames = item.genres
+		.map((genre) => genre.genre)
 		.filter((g): g is NonNullable<typeof g> => Boolean(g))
 
 	const handleWatchlist = () => {

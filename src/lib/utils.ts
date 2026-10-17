@@ -1,4 +1,4 @@
-import type { Media } from "./types/medias"
+import type { Media } from "./types/media"
 
 export { cn } from "cn"
 

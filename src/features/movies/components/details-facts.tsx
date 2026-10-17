@@ -1,5 +1,5 @@
 import { SectionHeader } from "@/components/shared/section-header"
-import type { Media } from "@/lib/types/medias"
+import type { Media } from "@/lib/types/media"
 
 type DetailsFactsProps = {
 	item: Media
@@ -15,15 +15,16 @@ export function DetailsFacts({ item }: DetailsFactsProps) {
 		{ label: "Country of origin", value: item.countryOfOrigin },
 		{
 			label: "Release date",
-			value: new Date(
-				"releaseDate" in item
-					? item.releaseDate
-					: (item.lastAirDate as string)
-			).toLocaleDateString("en-US", {
-				year: "numeric",
-				month: "long",
-				day: "numeric",
-			}),
+			value:
+				new Date(
+					(item.type === "movie"
+						? item.releaseDate
+						: item.lastAirDate) as Date
+				).toLocaleDateString("en-US", {
+					year: "numeric",
+					month: "long",
+					day: "numeric",
+				}) ?? "",
 		},
 	]
 

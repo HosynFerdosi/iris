@@ -9,17 +9,18 @@ import {
 	CarouselItem,
 } from "@/components/ui/carousel"
 import { ImageZoom } from "@/components/ui/kibo-ui/image-zoom"
+import type { MediaGalleryImage } from "@/generated/prisma/client"
 
 type MediaGallerySectionProps = {
-	trailerTitle?: string
+	trailerTitle: string | null
 	backdropPath: string
-	galleryPaths: string[]
+	gallery: MediaGalleryImage[]
 }
 
 export function MediaGallerySection({
 	trailerTitle,
 	backdropPath,
-	galleryPaths,
+	gallery,
 }: MediaGallerySectionProps) {
 	return (
 		<section>
@@ -42,11 +43,16 @@ export function MediaGallerySection({
 							trailerTitle={trailerTitle}
 						/>
 					</CarouselItem>
-					{galleryPaths.map((path, index) => (
-						<CarouselItem key={`${path}-${index.toString()}`}>
+					{gallery.map((image) => (
+						<CarouselItem key={image.id}>
 							<ImageZoom zoomMargin={10}>
 								<div className="relative aspect-video overflow-hidden rounded-xl ring-1 ring-white/5">
-									<AppImage alt="" aspect="auto" sizes="" src={path} />
+									<AppImage
+										alt=""
+										aspect="auto"
+										sizes=""
+										src={image.path}
+									/>
 								</div>
 							</ImageZoom>
 						</CarouselItem>
@@ -57,10 +63,9 @@ export function MediaGallerySection({
 	)
 }
 
-type MediaGalleryTrailerProps = Omit<
-	MediaGallerySectionProps,
-	"galleryPaths"
-> & { className?: string }
+type MediaGalleryTrailerProps = Omit<MediaGallerySectionProps, "gallery"> & {
+	className?: string
+}
 
 function MediaGalleryTrailer({
 	backdropPath,

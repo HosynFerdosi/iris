@@ -14,6 +14,28 @@ export type Movie = MediaGetPayload<{
 	}
 }>
 
+export type MovieDetails = MediaGetPayload<{
+	include: {
+		genres: {
+			include: {
+				genre: true
+			}
+		}
+		cast: {
+			include: {
+				person: true
+			}
+		}
+		crew: {
+			include: {
+				person: true
+			}
+		}
+		gallery: true
+		networks: true
+	}
+}>
+
 export const fetchMovies = async () => {
 	"use cache"
 
@@ -34,6 +56,31 @@ export const fetchMovies = async () => {
 		},
 		orderBy: {
 			releaseDate: "desc",
+		},
+	})
+}
+
+export const findMovie = async (slug: string) => {
+	return prisma.media.findFirst({
+		where: { slug },
+		include: {
+			genres: {
+				include: {
+					genre: true,
+				},
+			},
+			cast: {
+				include: {
+					person: true,
+				},
+			},
+			crew: {
+				include: {
+					person: true,
+				},
+			},
+			gallery: true,
+			networks: true,
 		},
 	})
 }

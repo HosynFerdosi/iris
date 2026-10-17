@@ -12,21 +12,18 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { MediaGallerySection } from "@/features/media/components/media-gallery-section"
-import { MediaRail } from "@/features/media/components/media-rail"
 import { CastCrewSection } from "@/features/movies/components/cast-crew-section"
 import { DetailsFacts } from "@/features/movies/components/details-facts"
 import { DetailsHero } from "@/features/movies/components/details-hero"
 import { ReviewsSection } from "@/features/movies/components/reviews-section"
-import { getSimilar } from "@/lib/data/func"
-import { getGenreById } from "@/lib/data/genres"
-import { getMovieById } from "@/lib/data/movies"
+import { findMovie } from "@/features/movies/server/db/movie.db"
 import { getReviewsByMediaId } from "@/lib/data/reviews"
 
 export async function generateMetadata({
 	params,
-}: PageProps<"/movie/[id]">): Promise<Metadata> {
-	const { id } = await params
-	const movie = getMovieById(id)
+}: PageProps<"/movie/[slug]">): Promise<Metadata> {
+	const { slug } = await params
+	const movie = await findMovie(slug)
 
 	if (!movie) return { title: "Movie not found" }
 
@@ -41,17 +38,14 @@ export async function generateMetadata({
 	}
 }
 
-export default async function Page({ params }: PageProps<"/movie/[id]">) {
-	const { id } = await params
-	const movie = getMovieById(id)
+export default async function Page({ params }: PageProps<"/movie/[slug]">) {
+	const { slug } = await params
+	const movie = await findMovie(slug)
 
 	if (!movie) notFound()
 
-	const similar = getSimilar(movie)
 	const reviews = getReviewsByMediaId(movie.id)
-	const primaryGenre = movie.genreIds[0]
-		? getGenreById(movie.genreIds[0])
-		: undefined
+	const primaryGenre = movie.genres.length ? movie.genres[0].genre : undefined
 
 	return (
 		<div className="pb-20 relative">
@@ -75,7 +69,7 @@ export default async function Page({ params }: PageProps<"/movie/[id]">) {
 								<BreadcrumbLink
 									render={
 										<Link
-											href={`/genres/${primaryGenre.id}` as Route}
+											href={`/genres/${primaryGenre.slug}` as Route}
 										>
 											{primaryGenre.name}
 										</Link>
@@ -101,18 +95,18 @@ export default async function Page({ params }: PageProps<"/movie/[id]">) {
 				<CastCrewSection cast={movie.cast} crew={movie.crew} />
 				<MediaGallerySection
 					backdropPath={movie.backdropPath}
-					galleryPaths={movie.galleryPaths}
+					gallery={movie.gallery}
 					trailerTitle={movie.trailerTitle}
 				/>
 				<DetailsFacts item={movie} />
 				<ReviewsSection item={movie} reviews={reviews} />
 			</div>
 
-			{similar.length > 0 && (
+			{/* {similar.length > 0 && (
 				<div className="mt-12">
 					<MediaRail items={similar} title="Similar movies" />
 				</div>
-			)}
+			)} */}
 		</div>
 	)
 }
