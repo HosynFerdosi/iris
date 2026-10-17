@@ -1,4 +1,4 @@
-import { MovieCard } from "@/features/media/components/movie-card"
+import { MediaCard } from "@/features/media/components/media-card"
 import type { Media } from "@/lib/types/media"
 import { cn } from "@/lib/utils"
 
@@ -16,7 +16,7 @@ export function MediaGrid({ items, className }: MediaGridProps) {
 			)}
 		>
 			{items.map((item) => (
-				<MovieCard item={item} key={item.id} />
+				<MediaCard item={item} key={item.id} />
 			))}
 		</div>
 	)

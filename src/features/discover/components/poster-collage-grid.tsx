@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { AppImage } from "@/components/shared/image"
-import type { Media } from "@/lib/types/media"
+import type { Media } from "@/lib/types/medias"
 
 interface PosterCollageGridProps {
 	items: Media[]

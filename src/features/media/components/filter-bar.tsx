@@ -18,16 +18,16 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet"
-import { genres } from "@/lib/data/genres"
+import type { Genre } from "@/generated/prisma/client"
 
 const sortOptions = [
-	{ value: "popular", label: "Most popular" },
-	{ value: "rating", label: "Highest rated" },
-	{ value: "newest", label: "Newest" },
+	{ value: "Popular", label: "Most popular" },
+	{ value: "Rating", label: "Highest rated" },
+	{ value: "Newest", label: "Newest" },
 ]
 const years = Array.from({ length: 30 }, (_, i) => (2027 - i).toString())
 
-function FilterControls() {
+function FilterControls({ genres }: FilterBarProps) {
 	return (
 		<>
 			<Select>
@@ -35,9 +35,9 @@ function FilterControls() {
 					<SelectValue placeholder="Genre" />
 				</SelectTrigger>
 				<SelectContent className="p-2">
-					<SelectItem value="all">All genres</SelectItem>
+					<SelectItem value="All">All genres</SelectItem>
 					{genres.map((genre) => (
-						<SelectItem key={genre.id} value={genre.id}>
+						<SelectItem key={genre.id} value={genre.name}>
 							{genre.name}
 						</SelectItem>
 					))}
@@ -49,7 +49,7 @@ function FilterControls() {
 					<SelectValue placeholder="Year" />
 				</SelectTrigger>
 				<SelectContent>
-					<SelectItem value="all">All years</SelectItem>
+					<SelectItem value="All">All years</SelectItem>
 					{years.map((year) => (
 						<SelectItem key={year} value={year}>
 							{year}
@@ -74,14 +74,18 @@ function FilterControls() {
 	)
 }
 
-export function FilterBar() {
+type FilterBarProps = {
+	genres: Genre[]
+}
+
+export function FilterBar({ genres }: FilterBarProps) {
 	const [mobileOpen, setMobileOpen] = useState(false)
 	const hasActiveFilters = false
 
 	return (
 		<div className="flex items-center gap-3">
 			<div className="hidden flex-1 flex-wrap gap-3 sm:flex">
-				<FilterControls />
+				<FilterControls genres={genres} />
 			</div>
 
 			<Sheet onOpenChange={setMobileOpen} open={mobileOpen}>
@@ -101,7 +105,7 @@ export function FilterBar() {
 						<SheetTitle>Filter & sort</SheetTitle>
 					</SheetHeader>
 					<div className="flex flex-col gap-3 p-5 pt-2">
-						<FilterControls />
+						<FilterControls genres={genres} />
 						<Button className="mt-2" onClick={() => setMobileOpen(false)}>
 							Show results
 						</Button>

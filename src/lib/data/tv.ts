@@ -1,4 +1,4 @@
-import type { TVShow } from "../types/media"
+import type { TVShow } from "../types/medias"
 
 export const tvShows: TVShow[] = [
 	{

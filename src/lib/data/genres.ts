@@ -1,4 +1,4 @@
-import type { Genre } from "@/lib/types/media"
+import type { Genre } from "@/lib/types/medias"
 
 export const genres: Genre[] = [
 	{

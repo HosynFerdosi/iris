@@ -4,7 +4,7 @@ import { AppImage } from "@/components/shared/image"
 import { Rating } from "@/components/shared/rating"
 import { Badge } from "@/components/ui/badge"
 import { getGenreById } from "@/lib/data/genres"
-import type { Media } from "@/lib/types/media"
+import type { Media } from "@/lib/types/medias"
 import { cn } from "@/lib/utils"
 
 interface HorizontalCardProps {

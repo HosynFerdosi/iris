@@ -1,21 +1,19 @@
-"use client"
-
 import { SearchIcon } from "@hugeicons/core-free-icons"
 import { EmptyState } from "@/components/shared/empty-state"
+import { fetchGenres } from "@/features/genres/server/db/genres.db"
 import { FilterBar } from "@/features/media/components/filter-bar"
 import { MediaGrid } from "@/features/media/components/media-grid"
-import type { Movie } from "@/lib/types/media"
+import { fetchMovies } from "@/features/movies/server/db/movie.db"
 
-type MoviesBrowserProps = {
-	movies: Movie[]
-}
+export async function MoviesBrowser() {
+	const movies = await fetchMovies()
+	const genres = await fetchGenres()
 
-export function MoviesBrowser({ movies }: MoviesBrowserProps) {
 	return (
 		<div>
 			<div className="mb-6 flex gap-4 items-center justify-between">
 				<p className="text-sm text-muted-foreground">0 Title</p>
-				<FilterBar />
+				<FilterBar genres={genres} />
 			</div>
 
 			{movies.length === 0 ? (

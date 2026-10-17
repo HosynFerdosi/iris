@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Suspense } from "react"
 import { AppImage } from "@/components/shared/image"
 import { MoviesBrowser } from "@/features/movies/components/movies-browser"
 import { movies } from "@/lib/data/movies"
@@ -37,7 +38,9 @@ export default function MoviesPage() {
 			</div>
 
 			<div className="mx-auto mt-10 max-w-[1600px] px-4 sm:px-6 lg:px-10">
-				<MoviesBrowser movies={movies} />
+				<Suspense fallback={<h2>Loading...</h2>}>
+					<MoviesBrowser />
+				</Suspense>
 			</div>
 		</div>
 	)

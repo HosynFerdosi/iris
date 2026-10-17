@@ -6,7 +6,7 @@ import {
 	CarouselContent,
 	CarouselItem,
 } from "@/components/ui/carousel"
-import { MovieCard } from "@/features/media/components/movie-card"
+import { MediaCard } from "@/features/media/components/media-card"
 import type { Media } from "@/lib/types/media"
 import { cn } from "@/lib/utils"
 
@@ -57,7 +57,7 @@ export function MediaRail({
 							className="basis-[38vw] p-0 sm:basis-[26vw] md:basis-[18vw] lg:basis-[14vw]"
 							key={item.id}
 						>
-							<MovieCard
+							<MediaCard
 								className="w-full"
 								item={item}
 								preload={preload && index < 4}

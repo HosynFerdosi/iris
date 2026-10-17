@@ -1,5 +1,5 @@
 import { SectionHeader } from "@/components/shared/section-header"
-import type { Media } from "@/lib/types/media"
+import type { Media } from "@/lib/types/medias"
 
 type DetailsFactsProps = {
 	item: Media

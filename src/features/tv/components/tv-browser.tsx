@@ -1,23 +1,15 @@
-"use client"
-
 import { Tv01Icon } from "@hugeicons/core-free-icons"
 import { EmptyState } from "@/components/shared/empty-state"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { fetchGenres } from "@/features/genres/server/db/genres.db"
 import { FilterBar } from "@/features/media/components/filter-bar"
 import { MediaGrid } from "@/features/media/components/media-grid"
-import type { TVShow } from "@/lib/types/media"
+import { fetchTvShows } from "../server/db/tv.db"
 
-const _sortOptions = [
-	{ value: "popular", label: "Most popular" },
-	{ value: "rating", label: "Highest rated" },
-	{ value: "newest", label: "Newest" },
-]
+export async function TvBrowser() {
+	const shows = await fetchTvShows()
+	const genres = await fetchGenres()
 
-interface TvBrowserProps {
-	shows: TVShow[]
-}
-
-export function TvBrowser({ shows }: TvBrowserProps) {
 	return (
 		<div>
 			<div className="mb-6 flex gap-4 items-center justify-between">
@@ -28,7 +20,7 @@ export function TvBrowser({ shows }: TvBrowserProps) {
 						<TabsTrigger value="ended">Ended</TabsTrigger>
 					</TabsList>
 				</Tabs>
-				<FilterBar />
+				<FilterBar genres={genres} />
 			</div>
 
 			{shows.length === 0 ? (

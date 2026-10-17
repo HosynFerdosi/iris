@@ -14,7 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import type { Review } from "@/lib/types/media"
+import type { Review } from "@/lib/types/medias"
 import { cn } from "@/lib/utils"
 
 function timeAgo(dateString: string): string {

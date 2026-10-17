@@ -24,7 +24,7 @@ import {
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
 import { getGenreById } from "@/lib/data/genres"
-import type { Media } from "@/lib/types/media"
+import type { Media } from "@/lib/types/medias"
 
 interface HeroCarouselProps {
 	items: Media[]

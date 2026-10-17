@@ -12,7 +12,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select"
-import type { Media, RatingBreakdown, Review } from "@/lib/types/media"
+import type { Media, RatingBreakdown, Review } from "@/lib/types/medias"
 import { RatingBreakdownChart } from "./rating-breakdown-chart"
 import { ReviewCard } from "./review-card"
 

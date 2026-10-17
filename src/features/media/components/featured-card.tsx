@@ -9,7 +9,7 @@ import { AppImage } from "@/components/shared/image"
 import { Rating } from "@/components/shared/rating"
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { getGenreById } from "@/lib/data/genres"
-import type { Media } from "@/lib/types/media"
+import type { Media } from "@/lib/types/medias"
 import { cn } from "@/lib/utils"
 
 interface FeaturedCardProps {

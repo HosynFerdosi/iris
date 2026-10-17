@@ -1,4 +1,4 @@
-import type { Media } from "@/lib/types/media"
+import type { Media } from "@/lib/types/medias"
 import { movies } from "./movies"
 import { tvShows } from "./tv"
 

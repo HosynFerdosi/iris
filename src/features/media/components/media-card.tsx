@@ -6,23 +6,19 @@ import { motion } from "framer-motion"
 import type { Route } from "next"
 import Link from "next/link"
 import { AppImage } from "@/components/shared/image"
-import { getGenreById } from "@/lib/data/genres"
 import type { Media } from "@/lib/types/media"
-import { cn } from "@/lib/utils"
+import { cn, relaseDate } from "@/lib/utils"
 
-type MovieCardProps = {
+type MediaCardProps = {
 	item: Media
 	className?: string
 	preload?: boolean
 }
 
-export function MovieCard({ item, className, preload }: MovieCardProps) {
-	const href = `/${item.type === "movie" ? "movie" : "tv"}/${item.id}`
-	const year = new Date(
-		"releaseDate" in item ? item.releaseDate : item.firstAirDate
-	).getFullYear()
-	const primaryGenre =
-		item.genreIds.length > 0 ? getGenreById(item.genreIds[0]) : undefined
+export function MediaCard({ item, className, preload }: MediaCardProps) {
+	const href = `/${item.type === "movie" ? "movie" : "tv"}/${item.slug}`
+	const year = relaseDate(item, "movie")
+	const genre = item.genres.length > 0 ? item.genres[0] : undefined
 
 	return (
 		<motion.div
@@ -60,7 +56,7 @@ export function MovieCard({ item, className, preload }: MovieCardProps) {
 					</h3>
 					<p className="truncate text-xs text-muted-foreground">
 						{year}
-						{primaryGenre ? ` · ${primaryGenre.name}` : ""}
+						{` ${genre?.genre.name ?? ""}`}
 					</p>
 				</div>
 			</Link>

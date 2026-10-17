@@ -2,7 +2,7 @@ import type { Metadata, Route } from "next"
 import Link from "next/link"
 import { AppImage } from "@/components/shared/image"
 import { TvBrowser } from "@/features/tv/components/tv-browser"
-import { getTvShowTopRate, tvShows } from "@/lib/data/tv"
+import { getTvShowTopRate } from "@/lib/data/tv"
 
 export const metadata: Metadata = {
 	title: "TV Shows",
@@ -52,7 +52,7 @@ export default function TvPage() {
 			</div>
 
 			<div className="mx-auto mt-10 max-w-[1600px] px-4 sm:px-6 lg:px-10">
-				<TvBrowser shows={tvShows} />
+				<TvBrowser />
 			</div>
 		</div>
 	)

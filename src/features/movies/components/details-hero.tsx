@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
 import { getGenreById } from "@/lib/data/genres"
-import type { Movie, TVShow } from "@/lib/types/media"
+import type { Movie, TVShow } from "@/lib/types/medias"
 
 type DetailsHeroProps = {
 	item: Movie | TVShow

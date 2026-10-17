@@ -1,6 +1,6 @@
 import { StarIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import type { RatingBreakdown } from "@/lib/types/media"
+import type { RatingBreakdown } from "@/lib/types/medias"
 
 interface RatingBreakdownChartProps {
 	breakdown: RatingBreakdown[]

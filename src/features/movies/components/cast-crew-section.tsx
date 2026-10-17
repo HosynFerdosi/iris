@@ -1,7 +1,7 @@
 import { SectionHeader } from "@/components/shared/section-header"
 import { PersonCard } from "@/features/media/components/person-card"
 import { getPersonById } from "@/lib/data/people"
-import type { CastCredit, CrewCredit } from "@/lib/types/media"
+import type { CastCredit, CrewCredit } from "@/lib/types/medias"
 
 type CastCrewSectionProps = {
 	cast: CastCredit[]

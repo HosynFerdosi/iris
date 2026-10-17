@@ -13,7 +13,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select"
-import type { Season } from "@/lib/types/media"
+import type { Season } from "@/lib/types/medias"
 
 interface SeasonsSectionProps {
 	seasons: Season[]
