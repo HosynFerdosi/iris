@@ -34,7 +34,7 @@ export type TVShow = MediaGetPayload<{
 export const fetchTvShows = async () => {
 	"use cache"
 
-	cacheTag("movies")
+	cacheTag("tv-shows")
 	cacheLife("hours")
 
 	return prisma.media.findMany({

@@ -1,6 +1,6 @@
 import { Fragment, type ReactNode } from "react"
 import { Skeleton } from "../ui/skeleton"
-import { SectionHeader } from "./section-header"
+import { SectionHeader, type SectionHeaderProps } from "./section-header"
 
 export function SkeletonList({
 	children,
@@ -38,11 +38,15 @@ export function MediaGridSkeleton({ count = 12 }: { count?: number }) {
 	)
 }
 
-export function RailSkeleton({ count = 6 }: { count?: number }) {
+type RailSkeletonProps = {
+	count?: number
+} & SectionHeaderProps
+
+export function RailSkeleton({ count = 6, ...props }: RailSkeletonProps) {
 	return (
-		<div className="space-y-4">
-			<Skeleton className="h-7 w-48" />
-			<div className="scrollbar-none flex gap-4 overflow-x-hidden px-4 sm:px-6 lg:px-10">
+		<div className="space-y-4 px-4 sm:px-6 lg:px-10">
+			<SectionHeader {...props} />
+			<div className="scrollbar-none flex gap-4 overflow-x-hidden">
 				<SkeletonList count={count}>
 					<div className="w-[42vw] shrink-0 sm:w-[26vw] md:w-[18vw] lg:w-[14vw]">
 						<PosterCardSkeleton />
@@ -189,6 +193,55 @@ export function GenresListSkeleton() {
 			<SkeletonList count={12}>
 				<Skeleton className="w-3/4 h-4 rounded-full" />
 			</SkeletonList>
+		</div>
+	)
+}
+
+export function SpotlightSkeleton() {
+	return (
+		<div className="mx-auto mt-10 max-w-[1600px] px-4 sm:px-6 lg:px-10">
+			<div className="relative flex min-h-80 items-end overflow-hidden rounded-2xl ring-1 ring-white/5">
+				<Skeleton className="absolute inset-0 z-0 h-full w-full rounded-none" />
+
+				<div className="absolute inset-0 z-1 bg-linear-to-t from-background to-transparent" />
+				<div className="absolute inset-0 z-1 bg-linear-to-r from-background via-transparent to-background" />
+
+				<div className="relative z-10 w-full max-w-xl p-6 sm:p-10">
+					<Skeleton className="h-3 w-32" />
+
+					<Skeleton className="mt-4 h-8 w-3/4 sm:h-9" />
+
+					<div className="mt-3 space-y-2">
+						<Skeleton className="h-4 w-full" />
+						<Skeleton className="h-4 w-5/6" />
+					</div>
+				</div>
+			</div>
+		</div>
+	)
+}
+
+type UpComingSkeletonProps = {} & SectionHeaderProps
+
+export function UpComingSkeleton({ ...props }: UpComingSkeletonProps) {
+	return (
+		<div className="mx-auto mt-14 max-w-[1600px] px-4 sm:px-6 lg:px-10">
+			<SectionHeader className="mb-4" {...props} />
+
+			<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				<SkeletonList count={3}>
+					<div className="relative aspect-3/2 overflow-hidden rounded-xl ring-1 ring-white/5">
+						<Skeleton className="absolute inset-0 h-full w-full rounded-none" />
+
+						<div className="absolute inset-0 bg-linear-to-t from-overlay-scrim/85 to-transparent" />
+
+						<div className="absolute inset-x-0 bottom-0 space-y-2 p-4">
+							<Skeleton className="h-3 w-24" />
+							<Skeleton className="h-5 w-3/4" />
+						</div>
+					</div>
+				</SkeletonList>
+			</div>
 		</div>
 	)
 }
