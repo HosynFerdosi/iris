@@ -1,4 +1,5 @@
-import { ProfileHeaderSkeleton, Skeleton } from "@/components/shared/skeleton"
+import { ProfileHeaderSkeleton } from "@/components/shared/skeleton"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function ProfileLoading() {
 	return (

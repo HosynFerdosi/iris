@@ -51,20 +51,21 @@ export function SiteHeader() {
 						<HugeiconsIcon className="size-5" icon={BookmarkAdd01Icon} />
 					</Button>
 					<ThemeToggle />
-					<Button aria-label="Profile" size="icon" variant="ghost">
+					<Button
+						aria-label="Profile"
+						className="max-lg:hidden"
+						size="icon"
+						variant="ghost"
+					>
 						<HugeiconsIcon className="size-5" icon={UserIcon} />
 					</Button>
 					<GlassButton
-						className="text-primary font-semibold rounded-lg text-xs h-9 px-4"
+						className="text-primary font-semibold rounded-lg text-xs max-lg:hidden h-9 px-4"
 						glassVariant="liquid"
 						nativeButton={false}
-						render={
-							<Link className="max-lg:hidden" href="/">
-								Sign in
-							</Link>
-						}
+						render={<Link href="/">Sign in</Link>}
 						size="sm"
-					></GlassButton>
+					/>
 					<MobileNav />
 				</div>
 			</div>
