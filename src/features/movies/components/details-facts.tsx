@@ -1,8 +1,10 @@
 import { SectionHeader } from "@/components/shared/section-header"
-import type { Media } from "@/lib/types/media"
+import type { TVShow } from "@/features/tv/server/db/tv.db"
+import { relaseDate } from "@/lib/utils"
+import type { Movie } from "../server/db/movie.db"
 
 type DetailsFactsProps = {
-	item: Media
+	item: Movie | TVShow
 }
 
 export function DetailsFacts({ item }: DetailsFactsProps) {
@@ -16,11 +18,7 @@ export function DetailsFacts({ item }: DetailsFactsProps) {
 		{
 			label: "Release date",
 			value:
-				new Date(
-					(item.type === "movie"
-						? item.releaseDate
-						: item.lastAirDate) as Date
-				).toLocaleDateString("en-US", {
+				relaseDate(item)?.toLocaleDateString("en-US", {
 					year: "numeric",
 					month: "long",
 					day: "numeric",
@@ -28,7 +26,7 @@ export function DetailsFacts({ item }: DetailsFactsProps) {
 		},
 	]
 
-	if ("networks" in item && item.networks && item.networks.length > 0) {
+	if (item.networks.length > 0) {
 		facts.push({
 			label: "Network",
 			value: item.networks.map((network) => network.name).join(", "),

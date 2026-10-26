@@ -5,6 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import NextImage, { type ImageProps as NextImageProps } from "next/image"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
+import { Skeleton } from "../ui/skeleton"
 
 type ImageAspect = "poster" | "backdrop" | "square" | "avatar" | "auto"
 
@@ -103,7 +104,6 @@ export function AppImage({
 					)}
 					fill={fill ?? true}
 					key={src}
-					loading="eager"
 					onError={handleError}
 					onLoad={handleLoad}
 					ref={imageRef}
@@ -116,7 +116,7 @@ export function AppImage({
 			)}
 
 			{status === "loading" && src && (
-				<div aria-hidden="true" className="absolute inset-0 shimmer" />
+				<Skeleton aria-hidden="true" className="absolute inset-0" />
 			)}
 		</div>
 	)

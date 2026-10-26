@@ -17,7 +17,7 @@ type DetailsHeroProps = {
 }
 
 export function DetailsHero({ item }: DetailsHeroProps) {
-	const year = relaseDate(item, item.type as "movie" | "tv")
+	const year = relaseDate(item)?.getFullYear()
 	const genreNames = item.genres
 		.map((genre) => genre.genre)
 		.filter((g): g is NonNullable<typeof g> => Boolean(g))

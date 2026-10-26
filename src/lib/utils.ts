@@ -6,8 +6,7 @@ export const wait = async (ms: number) => {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export const relaseDate = (item: Media, type: "movie" | "tv") => {
-	const date = item.type === type ? item.releaseDate : item.firstAirDate
-
-	return date ? new Date(date).getFullYear() : null
+export const relaseDate = (item: Media) => {
+	const date = item.type === "movie" ? item.releaseDate : item.firstAirDate
+	return date ? new Date(date) : undefined
 }

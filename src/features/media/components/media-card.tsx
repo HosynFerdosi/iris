@@ -17,7 +17,7 @@ type MediaCardProps = {
 
 export function MediaCard({ item, className, preload }: MediaCardProps) {
 	const href = `/${item.type === "movie" ? "movie" : "tv"}/${item.slug}`
-	const year = relaseDate(item, "movie")
+	const year = relaseDate(item)?.getFullYear()
 	const genre = item.genres.length > 0 ? item.genres[0] : undefined
 
 	return (
@@ -55,8 +55,7 @@ export function MediaCard({ item, className, preload }: MediaCardProps) {
 						{item.title}
 					</h3>
 					<p className="truncate text-xs text-muted-foreground">
-						{year}
-						{` ${genre?.genre.name ?? ""}`}
+						{`${year} ${genre?.genre.name ?? ""}`}
 					</p>
 				</div>
 			</Link>

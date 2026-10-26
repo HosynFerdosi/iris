@@ -1,7 +1,7 @@
 import { HeroSkeleton, ReviewCardSkeleton } from "@/components/shared/skeleton"
 import { Skeleton } from "@/components/ui/skeleton"
 
-export default function MovieLoading() {
+export default function Loading() {
 	return (
 		<div className="pb-20">
 			<HeroSkeleton />

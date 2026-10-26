@@ -1,7 +1,7 @@
 import { FilterBarSkeleton } from "@/components/shared/skeleton"
 import { Skeleton } from "@/components/ui/skeleton"
 
-export default function TvLoading() {
+export default function Loading() {
 	return (
 		<div className="pb-20">
 			<div className="mx-auto max-w-[1600px] space-y-6 px-4 pt-8 sm:px-6 lg:px-10">

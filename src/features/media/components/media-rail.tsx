@@ -1,5 +1,3 @@
-"use client"
-
 import { SectionHeader } from "@/components/shared/section-header"
 import {
 	Carousel,

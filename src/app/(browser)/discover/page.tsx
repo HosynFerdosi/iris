@@ -27,11 +27,11 @@ export default async function Page() {
 			fetchUpcomingMedia(),
 			fetchGenres(),
 		])
-	const spotlight = upcoming[0]
+	const spotlight = upcoming[0] ?? null
 
 	return (
 		<>
-			{spotlight && <Spotlight spotlight={spotlight} />}
+			<Spotlight spotlight={spotlight} />
 			<MediaRail
 				description="The most talked-about movies and shows right now."
 				items={trending}
@@ -67,6 +67,7 @@ export default async function Page() {
 				items={populars}
 				title="Critically acclaimed"
 			/>
+			
 			<GenresList genres={genres} />
 		</>
 	)

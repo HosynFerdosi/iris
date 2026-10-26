@@ -4,10 +4,12 @@ import { AppImage } from "@/components/shared/image"
 import type { Media } from "@/lib/types/media"
 
 type Props = {
-	spotlight: Media
+	spotlight: Media | null
 }
 
 export function Spotlight({ spotlight }: Props) {
+	if (!spotlight) return null
+
 	return (
 		<div className="mx-auto mt-10 max-w-[1600px] px-4 sm:px-6 lg:px-10">
 			<Link

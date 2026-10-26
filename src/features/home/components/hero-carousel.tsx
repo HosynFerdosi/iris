@@ -23,8 +23,8 @@ import {
 } from "@/components/ui/carousel"
 import { GlassBadge } from "@/components/ui/glasscn/glass-badge"
 import { GlassButton } from "@/components/ui/glasscn/glass-button"
-import { getGenreById } from "@/lib/data/genres"
-import type { Media } from "@/lib/types/medias"
+import type { Media } from "@/lib/types/media"
+import { relaseDate } from "@/lib/utils"
 
 interface HeroCarouselProps {
 	items: Media[]
@@ -54,19 +54,17 @@ export function HeroCarousel({ items }: HeroCarouselProps) {
 
 	if (!current) return null
 
-	const year = new Date(
-		"releaseDate" in current ? current.releaseDate : current.firstAirDate
-	).getFullYear()
+	const year = relaseDate(current)?.getFullYear()
 
-	const genreNames = current.genreIds
+	const genreNames = current.genres
 		.slice(0, 3)
-		.map((id) => getGenreById(id)?.name)
+		.map(({ genre }) => genre.name)
 		.filter(Boolean)
 
-	const href = `/${current.type === "movie" ? "movie" : "tv"}/${current.id}`
+	const href = `/${current.type}/${current.slug}`
 
 	return (
-		<section className="relative h-[86vh] min-h-140 w-full overflow-hidden bg-background">
+		<section className="relative min-h-140 md:h-[85vh] h-[70vh] w-full flex items-center overflow-hidden bg-background">
 			<div className="pointer-events-none absolute inset-0 overflow-hidden">
 				<Carousel
 					className="size-full *:h-full"

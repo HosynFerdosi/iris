@@ -31,7 +31,7 @@ export function UpComing({ upcoming, ...props }: Props) {
 						<div className="absolute inset-0 bg-linear-to-t from-overlay-scrim/85 to-transparent" />
 						<div className="absolute inset-x-0 bottom-0 p-4">
 							<p className="text-xs text-primary">
-								{relaseDate(item, item.type as "movie")}
+								{relaseDate(item)?.getFullYear()}
 							</p>
 							<h3 className="mt-0.5 font-semibold text-white group-hover:text-primary transition-colors">
 								{item.title}
